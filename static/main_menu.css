@@ -1,0 +1,175 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Georgia", serif; /* A classic serif font for vintage vibes */
+    background-color: #f8f1e5; /* Soft cream background */
+    color: #5a4634; /* Deep brown for text */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a38974; /* Warm vintage brown */
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar li {
+    margin: 0 1rem;
+}
+
+.navbar a {
+    color: #f8f1e5; /* Creamy text for contrast */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #d1b18a; /* Soft vintage tan */
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('vintage-hero.jpg'); /* Use a muted vintage image */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 4rem 1rem;
+    color: #fad393;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero .button {
+    background-color: #d1b18a; /* Tan vintage button */
+    color: #5a4634; /* Deep brown text */
+    text-decoration: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.hero .button:hover {
+    background-color: #e6c6a8; /* Slightly brighter tan */
+}
+
+/* Categories Section */
+.categories {
+    padding: 2rem;
+    background-color: #eae4d9; /* Light muted taupe */
+}
+
+.categories h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #5a4634; /* Deep brown */
+}
+
+.category-list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.category {
+    text-align: center;
+    margin: 1rem;
+    color: #5a4634;
+}
+
+.category img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    border: 2px solid #d1b18a; /* Border for vintage feel */
+}
+
+/* Products Section */
+.products {
+    padding: 2rem;
+    background-color: #f4ede0; /* Very soft taupe background */
+}
+
+.products h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #5a4634;
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.product {
+    background-color: #eae4d9; /* Light taupe for product cards */
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.product h3 {
+    margin: 0.5rem 0;
+    color: #5a4634;
+}
+
+.product p {
+    font-size: 1.1rem;
+    color: #a38974;
+}
+
+.product .button {
+    background-color: #d1b18a;
+    color: #5a4634;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product .button:hover {
+    background-color: #e6c6a8;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    background-color: #a38974; /* Match the navbar */
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #f8f1e5;
+    margin-top: 2rem;
+}
