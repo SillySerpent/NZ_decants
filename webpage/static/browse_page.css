@@ -1,0 +1,121 @@
+/* General Styles */
+body {
+  font-family: 'Georgia', serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4efe9; /* Neutral vintage beige */
+  color: #5a5148; /* Vintage muted brown */
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  color: #8c6a4c; /* Warm accent */
+}
+
+.tagline {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #766556;
+}
+
+/* Featured Colognes Section */
+.featured-colognes {
+  padding: 30px 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.featured-colognes h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #8c6a4c; /* Warm accent */
+}
+
+.grid-container.featured {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Smaller cards */
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Product Card Styles */
+.card {
+  background-color: #fff;
+  border: 1px solid #dcd1c1; /* Subtle neutral border */
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #766556; /* Match tagline color */
+  padding: 0 10px;
+}
+
+.card button {
+  background-color: #8c6a4c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.card button:hover {
+  background-color: #7a5437; /* Darker hover color */
+}
+
+/* Half-Size Cards for Featured Products */
+.card.half-size {
+  width: 48%; /* 50% to make them half the size of the original */
+  padding: 20px;
+}
+
+/* Large border for smaller selection */
+.small-selection-wrapper {
+  border: 3px solid #8c6a4c; /* Large border */
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 15px;
+  background-color: #fff; /* Inside white background */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 4 per row */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Smaller Cards */
+.card.small {
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}

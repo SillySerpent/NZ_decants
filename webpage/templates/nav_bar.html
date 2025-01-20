@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nav Bar</title>
+  <link href="static/nav_bar.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/browse_page.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <ul class="navbar-menu">
+      <li><a href="{{ url_for('home_page_blueprint.home_page') }}">Home</a></li>
+      <li><a href="{{ url_for('browse_page_blueprint.browse_page') }}">Browse</a></li>
+      <li><a href="#services">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span class="brand">Nz Decant</span>
+  </nav>
+</body>
+
+</html>

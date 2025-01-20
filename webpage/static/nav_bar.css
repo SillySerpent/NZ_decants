@@ -50,6 +50,21 @@ body {
     color: #5a4634; /* Deep brown text */
 }
 
+.navbar .brand {
+    margin-left: auto;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f8f1e5;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.navbar .brand:hover {
+    color: #d1b18a; /* Vintage tan when hovered */
+    letter-spacing: 1px;
+}
+
 /* Hero Section */
 .hero {
     background-image: url(https://www.shutterstock.com/image-photo/flat-lay-top-view-on-260nw-2313746379.jpg); /* Replace with a suitable vintage image */
@@ -84,101 +99,3 @@ body {
     background-color: #e6c6a8; /* Lighter tan */
 }
 
-/* Categories Section */
-.categories {
-    padding: 2rem;
-    background-color: #eae4d9; /* Soft taupe */
-}
-
-.categories h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #5a4634;
-}
-
-.category-list {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-.category {
-    text-align: center;
-    margin: 1rem;
-    color: #5a4634;
-}
-
-.category img {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
-    margin-bottom: 0.5rem;
-    border: 2px solid #d1b18a; /* Vintage tan border */
-}
-
-/* Products Section */
-.products {
-    padding: 2rem;
-    background-color: #f4ede0; /* Very soft taupe */
-}
-
-.products h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #5a4634;
-}
-
-.product-list {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-.product {
-    background-color: #eae4d9; /* Light taupe */
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.product img {
-    width: 150px;
-    height: 150px;
-    border-radius: 5px;
-}
-
-.product h3 {
-    margin: 0.5rem 0;
-    color: #5a4634;
-}
-
-.product p {
-    font-size: 1.1rem;
-    color: #a38974; /* Accent brown */
-}
-
-.product .button {
-    background-color: #d1b18a;
-    color: #5a4634;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.product .button:hover {
-    background-color: #e6c6a8;
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-    background-color: #a38974; /* Match navbar */
-    padding: 1rem;
-    font-size: 0.9rem;
-    color: #f8f1e5;
-    margin-top: 2rem;
-}

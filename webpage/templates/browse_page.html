@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse | NZ Decants</title>
+  <link rel="stylesheet" href="static/main_menu.css">
+  <link rel="stylesheet" href="static/nav_bar.css">
+  <link rel="stylesheet" href="static/browse_page.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  {% include 'nav_bar.html' %}
+
+  <!-- Main Content -->
+  <main class="browse-content">
+
+    <h1>Browse Our Collection</h1>
+    <p class="tagline">Handpicked selections to match your taste.</p>
+
+    {% include 'search_bar.html' %}
+    {% if search_results %}
+    <ul>
+        {% for result in search_results %}
+            <li>{{ result }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- Featured Colognes -->
+    <section class="featured-colognes">
+      <h2>Featured Colognes</h2>
+      <div class="grid-container featured">
+        <div class="card half-size">
+          <img src="../static/photos_for_browse_page/miss_dior.png" alt="Floral Embrace">
+          <h2>Miss. Dior</h2>
+          <p>A delicate blend of roses and jasmine.</p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div class="card half-size">
+          <img src="../static/photos_for_browse_page/creed_aventus.png" alt="Amber Hues">
+          <h2>Creed Aventus</h2>
+          <p>Warm amber with notes of vanilla.</p>
+          <button>Add to Cart</button>
+        </div>
+
+        <div class="card half-size">
+          <img src="../static/photos_for_browse_page/jpg_elixer.png" alt="Citrus Burst">
+          <h2>PG Elixir</h2>
+          <p>Fresh citrus with hints of bergamot.</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Colognes -->
+    <section class="all-colognes">
+      <h2>Explore More Colognes</h2>
+      <div class="small-selection-wrapper">
+        <div class="grid-container">
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/vanilla_oasis.jpg" alt="Vanilla Oasis">
+            <h2>Vanilla Oasis</h2>
+            <p>A soothing blend of vanilla and amber.</p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/rose_de_luxe.jpg" alt="Rose de Luxe">
+            <h2>Rose de Luxe</h2>
+            <p>A luxurious floral fragrance with rose notes.</p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/citrus_sensation.jpg" alt="Citrus Sensation">
+            <h2>Citrus Sensation</h2>
+            <p>A refreshing blend of citrus fruits and herbs.</p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/oud_essence.jpg" alt="Oud Essence">
+            <h2>Oud Essence</h2>
+            <p>Rich oud notes with a hint of sweet spices.</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+        <div class="grid-container">
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/woodland_aroma.jpg" alt="Woodland Aroma">
+            <h2>Woodland Aroma</h2>
+            <p>Earthy woody notes with hints of fresh pine.</p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/spicy_whisper.jpg" alt="Spicy Whisper">
+            <h2>Spicy Whisper</h2>
+            <p>A fiery fragrance with spices and sandalwood.</p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/sunkissed_breeze.jpg" alt="Sunkissed Breeze">
+            <h2>Sunkissed Breeze</h2>
+            <p>A light citrus and floral fragrance for sunny days.</p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/mystic_chic.jpg" alt="Mystic Chic">
+            <h2>Mystic Chic</h2>
+            <p>Smoky, woody scent with a touch of floral elegance.</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+        <div class="grid-container">
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/silver_luxe.jpg" alt="Silver Luxe">
+            <h2>Silver Luxe</h2>
+            <p>A sophisticated blend of musk and floral accents.</p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/frosted_morning.jpg" alt="Frosted Morning">
+            <h2>Frosted Morning</h2>
+            <p>A cool and invigorating fragrance to start the day.</p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/amber_seduction.jpg" alt="Amber Seduction">
+            <h2>Amber Seduction</h2>
+            <p>Rich amber notes with a velvety texture.</p>
+            <button>Add to Cart</button>
+          </div>
+
+          <div class="card small">
+            <img src="../static/photos_for_browse_page/ocean_mystery.jpg" alt="Ocean Mystery">
+            <h2>Ocean Mystery</h2>
+            <p>A fresh and aquatic fragrance inspired by the sea.</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
+
+

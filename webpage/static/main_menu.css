@@ -6,17 +6,17 @@
 }
 
 body {
-    font-family: "Georgia", serif; /* A classic serif font for vintage vibes */
-    background-color: #f8f1e5; /* Soft cream background */
-    color: #5a4634; /* Deep brown for text */
+    font-family: "Georgia", serif;
+    background-color: #f8f1e5;
+    color: #5a4634;
 }
 
 /* Navbar */
 .navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    background-color: #a38974; /* Warm vintage brown */
+    background-color: #a38974;
     padding: 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -31,19 +31,19 @@ body {
 }
 
 .navbar a {
-    color: #f8f1e5; /* Creamy text for contrast */
+    color: #f8f1e5;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 .navbar a:hover {
-    color: #d1b18a; /* Soft vintage tan */
+    color: #d1b18a;
 }
 
 /* Hero Section */
 .hero {
-    background-image: url('vintage-hero.jpg'); /* Use a muted vintage image */
+    background-image: url('vintage-fragrance-banner.jpg'); /* Realistic fragrance photo */
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -52,39 +52,42 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
+    color: #5a4634;
 }
 
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
+    color: #5a4634;
 }
 
 .hero .button {
-    background-color: #d1b18a; /* Tan vintage button */
-    color: #5a4634; /* Deep brown text */
+    background-color: #d1b18a;
+    color: #5a4634;
     text-decoration: none;
     padding: 0.7rem 1.2rem;
     border-radius: 5px;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .hero .button:hover {
-    background-color: #e6c6a8; /* Slightly brighter tan */
+    background-color: #e6c6a8;
+    transform: scale(1.05); /* Small zoom effect */
 }
 
 /* Categories Section */
 .categories {
     padding: 2rem;
-    background-color: #eae4d9; /* Light muted taupe */
+    background-color: #eae4d9;
 }
 
 .categories h2 {
     text-align: center;
     margin-bottom: 1.5rem;
-    color: #5a4634; /* Deep brown */
+    color: #5a4634;
 }
 
 .category-list {
@@ -97,20 +100,30 @@ body {
     text-align: center;
     margin: 1rem;
     color: #5a4634;
+    transition: transform 0.3s ease;
+}
+
+.category:hover {
+    transform: translateY(-5px); /* Hover effect to make categories interactive */
 }
 
 .category img {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
     margin-bottom: 0.5rem;
-    border: 2px solid #d1b18a; /* Border for vintage feel */
+    border: 2px solid #d1b18a;
+}
+
+.category p {
+    font-weight: bold;
+    font-size: 1.1rem;
 }
 
 /* Products Section */
 .products {
     padding: 2rem;
-    background-color: #f4ede0; /* Very soft taupe background */
+    background-color: #f4ede0;
 }
 
 .products h2 {
@@ -126,18 +139,25 @@ body {
 }
 
 .product {
-    background-color: #eae4d9; /* Light taupe for product cards */
-    padding: 1rem;
+    background-color: #eae4d9;
+    padding: 1.5rem;
     margin: 1rem;
-    border-radius: 10px;
+    border-radius: 15px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enlarge shadow */
 }
 
 .product img {
-    width: 150px;
-    height: 150px;
-    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
 }
 
 .product h3 {
@@ -154,22 +174,24 @@ body {
     background-color: #d1b18a;
     color: #5a4634;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.2rem;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s ease;
 }
 
 .product .button:hover {
     background-color: #e6c6a8;
+    transform: scale(1.05); /* Add zoom effect */
 }
 
 /* Footer */
 .footer {
     text-align: center;
-    background-color: #a38974; /* Match the navbar */
+    background-color: #a38974;
     padding: 1rem;
     font-size: 0.9rem;
     color: #f8f1e5;
     margin-top: 2rem;
 }
+
