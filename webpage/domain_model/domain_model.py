@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-
 class Cologne(db.Model):
     __tablename__ = 'colognes'
 
@@ -25,7 +24,36 @@ class Cologne(db.Model):
     concentration = db.Column(db.String(50))
 
 
+    def __init__(self, id, price, name, size, picture_url, description, season,
+                 category, sex, discount, featured, availability, rating,
+                 notes, release_year, concentration):
+        self.id = id
+        self.price = price
+        self.name = name
+        self.size = size
+        self.picture_url = picture_url
+        self.description = description
+        self.season = season
+        self.category = category
+        self.sex = sex
+        self.discount = discount
+        self.featured = featured
+        self.availability = availability
+        self.rating = rating
+        self.notes = notes
+        self.release_year = release_year
+        self.concentration = concentration
 
+
+    def __str__(self):
+        return (
+            f"Cologne: {self.name}\n"
+            f"Scent Profile: {self.notes}\n"
+            f"Size: {self.size}\n"
+            f"Price: ${self.price:.2f}\n"
+            f"Description: {self.description}"
+            f"\n"
+        )
 
 class User(db.Model):  # Inherit from db.Model for SQLAlchemy integration
     __tablename__ = 'users'  # Table name in the database
@@ -63,3 +91,19 @@ class Cart(db.Model):
 
     def __repr__(self):
         return f"<Cart for User {self.user_id}>"
+
+
+
+class Review(db.Model):
+
+    __tablename__ = 'reviews'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    item_id = db.Column(db.Integer, db.ForeignKey('carts.id'), nullable=False)
+    rating = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, user_id: int, item_id: int, rating: int):
+        self.user_id = user_id
+        self.item_id = item_id
+        self.rating = rating
+
