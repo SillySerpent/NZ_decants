@@ -1,32 +1,31 @@
 from flask_sqlalchemy import SQLAlchemy
 
-
 db = SQLAlchemy()
 
+
 class Cologne(db.Model):
-    __tablename__ = 'colognes'
+    __tablename__ = 'cologne'
 
     id = db.Column(db.Integer, primary_key=True)
     price = db.Column(db.Float, nullable=False)
-    name = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String, nullable=False)
     size = db.Column(db.Integer, nullable=False)
-    picture_url = db.Column(db.String(255))
-    description = db.Column(db.Text)
-    season = db.Column(db.String(50))
-    category = db.Column(db.String(50))
-    sex = db.Column(db.PickleType())  # Assuming `sex` is a list
-    discount = db.Column(db.Integer)
-    featured = db.Column(db.Boolean)
-    availability = db.Column(db.Boolean)
-    rating = db.Column(db.Integer)
-    notes = db.Column(db.PickleType())  # Assuming `notes` is a list
-    release_year = db.Column(db.Integer)
-    concentration = db.Column(db.String(50))
+    picture_url = db.Column(db.String, nullable=True)
+    description = db.Column(db.String, nullable=True)
+    season = db.Column(db.String, nullable=True)
+    sex = db.Column(db.String, nullable=True)
+    discount = db.Column(db.Float, nullable=True, default=0.0)
+    featured = db.Column(db.Boolean, nullable=True, default=False)
+    availability = db.Column(db.Integer, nullable=True)
+    rating = db.Column(db.Integer, nullable=True)
+    notes = db.Column(db.String, nullable=True)
+    release_year = db.Column(db.Integer, nullable=True)
+    concentration = db.Column(db.String, nullable=True)
 
 
-    def __init__(self, id, price, name, size, picture_url, description, season,
-                 category, sex, discount, featured, availability, rating,
-                 notes, release_year, concentration):
+    def __init__(self, price, name, size, picture_url, description, season,
+                 sex, rating, notes, release_year, concentration):
+
         self.id = id
         self.price = price
         self.name = name
@@ -34,76 +33,178 @@ class Cologne(db.Model):
         self.picture_url = picture_url
         self.description = description
         self.season = season
-        self.category = category
         self.sex = sex
-        self.discount = discount
-        self.featured = featured
-        self.availability = availability
+        self.discount = 0.00
+        self.featured = False
+        self.availability = True
         self.rating = rating
         self.notes = notes
         self.release_year = release_year
         self.concentration = concentration
 
-
     def __str__(self):
         return (
             f"Cologne: {self.name}\n"
             f"Scent Profile: {self.notes}\n"
-            f"Size: {self.size}\n"
+            f"Size: {self.size}ml\n"
             f"Price: ${self.price:.2f}\n"
-            f"Description: {self.description}"
-            f"\n"
+            f"Description: {self.description}\n"
         )
 
-class User(db.Model):  # Inherit from db.Model for SQLAlchemy integration
-    __tablename__ = 'users'  # Table name in the database
+    def is_available(self):
+        return self.availability
 
-    # Define table columns
-    id = db.Column(db.Integer, primary_key=True)  # Primary key
-    username = db.Column(db.String(80), unique=True, nullable=False)  # Username must be unique
-    password = db.Column(db.String(120), nullable=False)  # Store hashed passwords
-    name = db.Column(db.String(120), nullable=False)  # User's name
-    email = db.Column(db.String(120), unique=True, nullable=False)  # Email must be unique
+    def apply_discount(self):
+        if self.discount:
+            return self.price * (1 - self.discount / 100)
+        return self.price
 
-    # Relationship to Cart model
+
+class User(db.Model):
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(120), nullable=False)
+    name = db.Column(db.String(120), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
     cart = db.relationship('Cart', backref='user', lazy=True)
+    orders = db.relationship('Order', backref='user', lazy=True)
 
-    def __init__(self, username: str, password: str, id: int, name: str, email: str):
+    def __init__(self, username: str, password: str, name: str, email: str):
         self.username = username
         self.password = password
-        self.id = id
         self.name = name
         self.email = email
 
     def __repr__(self):
         return f"<User {self.username}>"
 
+    def get_cart(self):
+        return self.cart
+
+    def get_orders(self):
+        return self.orders
+
 
 class Cart(db.Model):
     __tablename__ = 'carts'
 
-    id = db.Column(db.Integer, primary_key=True)  # Primary key
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # Foreign key linking to users
-    items = db.Column(db.PickleType, nullable=True)  # Store items as a serialized list
-
-    def __init__(self, user_id: int):
-        self.user_id = user_id
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    items = db.relationship('CartItem', backref='cart', lazy=True)
 
     def __repr__(self):
         return f"<Cart for User {self.user_id}>"
 
+    def add_item(self, cologne_id: int, quantity: int):
+        existing_item = next((item for item in self.items if item.cologne_id == cologne_id), None)
+        if existing_item:
+            existing_item.quantity += quantity
+        else:
+            new_item = CartItem(cart_id=self.id, cologne_id=cologne_id, quantity=quantity)
+            db.session.add(new_item)
+
+    def remove_item(self, cologne_id: int):
+        item = next((item for item in self.items if item.cologne_id == cologne_id), None)
+        if item:
+            db.session.delete(item)
+
+    def clear_cart(self):
+        for item in self.items:
+            db.session.delete(item)
+
+
+class CartItem(db.Model):
+    __tablename__ = 'cart_items'
+
+    id = db.Column(db.Integer, primary_key=True)
+    cart_id = db.Column(db.Integer, db.ForeignKey('carts.id'), nullable=False)
+    cologne_id = db.Column(db.Integer, db.ForeignKey('colognes.id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False, default=1)
+
+    def __init__(self, cart_id: int, cologne_id: int, quantity: int):
+        self.cart_id = cart_id
+        self.cologne_id = cologne_id
+        self.quantity = quantity
+
+    def __repr__(self):
+        return f"<CartItem Cologne {self.cologne_id} Quantity {self.quantity}>"
+
+    def get_total_price(self):
+        cologne = Cologne.query.get(self.cologne_id)
+        return cologne.apply_discount() * self.quantity
+
+
+class Order(db.Model):
+    __tablename__ = 'orders'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    total_price = db.Column(db.Float, nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    status = db.Column(db.String(50), nullable=False, default='Pending')
+
+    items = db.relationship('OrderItem', backref='order', lazy=True)
+
+    def __init__(self, user_id: int, total_price: float, date, status: str = 'Pending'):
+        self.user_id = user_id
+        self.total_price = total_price
+        self.date = date
+        self.status = status
+
+    def __repr__(self):
+        return f"<Order {self.id} by User {self.user_id} Status {self.status}>"
+
+    def update_status(self, new_status: str):
+        self.status = new_status
+
+
+class OrderItem(db.Model):
+    __tablename__ = 'order_items'
+
+    id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'), nullable=False)
+    cologne_id = db.Column(db.Integer, db.ForeignKey('colognes.id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False, default=1)
+    price_at_purchase = db.Column(db.Float, nullable=False)
+
+    def __init__(self, order_id: int, cologne_id: int, quantity: int, price_at_purchase: float):
+        self.order_id = order_id
+        self.cologne_id = cologne_id
+        self.quantity = quantity
+        self.price_at_purchase = price_at_purchase
+
+    def __repr__(self):
+        return f"<OrderItem Cologne {self.cologne_id} Quantity {self.quantity}>"
+
+    def get_total_price(self):
+        return self.price_at_purchase * self.quantity
 
 
 class Review(db.Model):
-
     __tablename__ = 'reviews'
+
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    item_id = db.Column(db.Integer, db.ForeignKey('carts.id'), nullable=False)
+    cologne_id = db.Column(db.Integer, db.ForeignKey('colognes.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
+    comment = db.Column(db.Text)
 
-    def __init__(self, user_id: int, item_id: int, rating: int):
+    def __init__(self, user_id: int, cologne_id: int, rating: int, comment: str = None):
         self.user_id = user_id
-        self.item_id = item_id
+        self.cologne_id = cologne_id
         self.rating = rating
+        self.comment = comment
+
+    def __repr__(self):
+        return f"<Review User {self.user_id} Cologne {self.cologne_id} Rating {self.rating}>"
+
+    def update_comment(self, new_comment: str):
+        self.comment = new_comment
+
+    def update_rating(self, new_rating: int):
+        self.rating = new_rating
+
 

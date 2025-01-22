@@ -1,10 +1,10 @@
 from abc import ABC
-from typing import Type, Any
+from typing import Type
 
 from sqlalchemy.exc import NoResultFound
 from sqlalchemy.orm import scoped_session
 
-from webpage.adapters.csv_data_reader.repository import AbstractRepository
+from webpage.adapters.repository import AbstractRepository
 from webpage.domain_model.domain_model import Cologne, Review
 
 
