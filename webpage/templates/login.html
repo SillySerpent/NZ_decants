@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login - NZ Decants</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='static/css/auth.css') }}">
     <!-- Include Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
@@ -34,7 +34,7 @@
                 <i class="fas fa-eye toggle-password"></i>
             </div>
             {{ form.submit(class="button") }}
-            <p class="auth-link">Don't have an account? <a href="{{ url_for('register') }}">Sign Up</a></p>
+            <p class="auth-link">Don't have an account? <a href="{{ url_for('routes_blueprint.register') }}">Sign Up</a></p>
         </form>
     </div>
 
@@ -42,7 +42,7 @@
     {% include 'footer.html' %}
 
     <!-- JavaScript Files -->
-    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
 
 </body>
 </html>

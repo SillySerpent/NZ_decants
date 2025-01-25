@@ -1,6 +1,6 @@
 from sqlalchemy.orm import scoped_session
 
-from webpage import CsvDataReader
+from webpage.adapters.csv_data_reader.csv_data_reader import CsvDataReader
 from webpage.domain_model.domain_model import Cologne
 
 

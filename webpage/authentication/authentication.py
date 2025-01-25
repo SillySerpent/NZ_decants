@@ -1,12 +1,15 @@
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash, request, Blueprint
 from flask_login import login_user, login_required, logout_user
 from werkzeug.security import check_password_hash
 
 from webpage.domain_model.domain_model import User
-from wsgi import app
+from webpage.forms_and_routs.forms import RegistrationForm
 
+authentication_blueprint = Blueprint('authentication_blueprint', __name__)
 
-@app.route('/login', methods=['GET', 'POST'])
+form = RegistrationForm()
+
+@authentication_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         # Authenticate user
@@ -18,9 +21,9 @@ def login():
             return redirect(url_for('home_page_blueprint.home_page'))
         else:
             flash('Invalid email or password')
-    return render_template('login.html')
+    return render_template('login.html', form=form)
 
-@app.route('/logout')
+@authentication_blueprint.route('/logout')
 @login_required
 def logout():
     logout_user()

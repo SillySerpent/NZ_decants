@@ -12,6 +12,10 @@ from webpage.adapters.db_methods.db_repository import SqlAlchemyRepository
 import webpage.adapters.repository as repo
 from webpage.domain_model.domain_model import db  # Assuming db is your SQLAlchemy instance
 
+
+bcrypt = Bcrypt()
+login_manager = LoginManager()
+
 def create_app():
     """Construct the core application."""
     app = Flask(__name__)
@@ -22,12 +26,11 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['DEBUG'] = True
-    app.config['SECRET_KEY'] = 'your-secret-key'  # Replace with your own secret key
+    app.config['SECRET_KEY'] = 'your-secret-key'  # Replace with your own secret key # Replace with your own secret key
 
     # --- Initialize Extensions ---
     db.init_app(app)
-    bcrypt = Bcrypt(app)
-    login_manager = LoginManager()
+    bcrypt.init_app(app)
     login_manager.init_app(app)
     login_manager.login_view = 'login'  # Redirect to login page if not authenticated
     login_manager.login_message_category = 'info'
@@ -72,8 +75,11 @@ def create_app():
         app.register_blueprint(cart.cart_blueprint)
 
         # Add blueprints for authentication
-        from webpage.auth import auth
-        app.register_blueprint(auth.auth_blueprint)
+        from webpage.authentication import authentication
+        app.register_blueprint(authentication.authentication_blueprint)
+
+        from webpage.forms_and_routs import routes
+        app.register_blueprint(routes.routes_blueprint)
 
     return app
 
