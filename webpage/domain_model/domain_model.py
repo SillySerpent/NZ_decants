@@ -1,4 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
+from webpage import LoginManager
+from flask_login import UserMixin
 
 db = SQLAlchemy()
 
@@ -53,20 +55,22 @@ class Cologne(db.Model):
             f"Description: {self.description}\n"
         )
 
-
     def __eq__(self, other):
         return self.id == other.id
 
 
-class User(db.Model):
-    __tablename__ = 'users'
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
+class User(db.Model, UserMixin):
+    __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(120), nullable=False)
-    name = db.Column(db.String(120), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-
+    username = db.Column(db.String(150), nullable=False, unique=True)
+    email = db.Column(db.String(150), nullable=False, unique=True)
+    password_hash = db.Column(db.String(150), nullable=False)
     cart = db.relationship('Cart', backref='user', lazy=True)
     orders = db.relationship('Order', backref='user', lazy=True)
 
@@ -204,6 +208,3 @@ class Review(db.Model):
 
     def update_rating(self, new_rating: int):
         self.rating = new_rating
-
-
-

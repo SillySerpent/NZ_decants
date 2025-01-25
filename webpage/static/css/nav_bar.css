@@ -99,3 +99,40 @@ body {
     background-color: #e6c6a8; /* Lighter tan */
 }
 
+/* Navigation Actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.nav-actions span {
+    margin-right: 1rem;
+    color: #f8f1e5;
+    font-weight: bold;
+}
+
+.nav-actions .nav-button {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: #f8f1e5;
+    border: 2px solid #d1b18a;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-actions .nav-button:hover {
+    background-color: #d1b18a;
+    color: #5a4634;
+}
+
+.nav-actions .nav-button--primary {
+    background-color: #d1b18a;
+    color: #5a4634;
+}
+
+.nav-actions .nav-button--primary:hover {
+    background-color: #e6c6a8;
+    color: #5a4634;
+}
+

@@ -9,14 +9,14 @@
         <li><a href="#categories">Categories</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="nav-icons">
-        <a href="#"><i class="fas fa-search"></i></a>
-        <a href=#><i class="fas fa-heart"></i></a>
-        <a href="{{ url_for('cart_blueprint.cart') }}">Cart<i class="fas fa-shopping-cart"></i></a>
-        <!-- User Authentication Icons -->
-
-
-
+    <div class="nav-actions">
+        {% if current_user.is_authenticated %}
+            <span>Welcome, {{ current_user.username }}!</span>
+            <a href="{{ url_for('logout') }}" class="nav-button">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="nav-button">Login</a>
+            <a href="{{ url_for('register') }}" class="nav-button nav-button--primary">Sign Up</a>
+        {% endif %}
     </div>
     <!-- Mobile menu toggle -->
     <div class="menu-toggle">
