@@ -11,8 +11,17 @@
     </ul>
     <div class="nav-actions">
         <a href="#"><i class="fas fa-search"></i></a>
-        <a href="#"><i class="fas fa-heart"></i></a>
-        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+
+        <!-- New Wish List Icon -->
+        <a href="#" title="Wish List">
+            <i class="fas fa-heart"></i>
+        </a>
+
+        <!-- New Cart Icon -->
+        <a href="{{ url_for('cart_blueprint.cart') }}" title="Cart">
+            <i class="fas fa-shopping-cart"></i>
+        </a>
+
         {% if current_user.is_authenticated %}
             <span>Welcome, {{ current_user.username }}!</span>
             <a href="{{ url_for('routes_blueprint.logout') }}" class="nav-button">Logout</a>
