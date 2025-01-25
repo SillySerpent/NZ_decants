@@ -54,6 +54,10 @@ class Cologne(db.Model):
         )
 
 
+    def __eq__(self, other):
+        return self.id == other.id
+
+
 class User(db.Model):
     __tablename__ = 'users'
 
