@@ -59,39 +59,41 @@ class Cologne(db.Model):
         return self.id == other.id
 
 
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), nullable=False, unique=True)
+    name = db.Column(db.String(150))
     email = db.Column(db.String(150), nullable=False, unique=True)
-    password_hash = db.Column(db.String(150), nullable=False)
-    cart = db.relationship('Cart', backref='user', lazy=True)
-    orders = db.relationship('Order', backref='user', lazy=True)
+    password_hash = db.Column(db.String(256), nullable=False)
 
-    def __init__(self, username: str, password: str, name: str, email: str):
+    def __init__(self, username: str, password: str, email: str):
         self.username = username
-        self.password = password
-        self.name = name
+        self.password = password  # Triggers the password setter
         self.email = email
 
-    def __repr__(self):
-        return f"<User {self.username}>"
+    @property
+    def password(self):
+        raise AttributeError('Password is not a readable attribute.')
 
-    def get_cart(self):
-        return self.cart
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
 
-    def get_orders(self):
-        return self.orders
-
+    def verify_password(self, candidate_password):
+        return check_password_hash(self.password_hash, candidate_password)
 
 class Cart(db.Model):
     __tablename__ = 'carts'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Corrected
     items = db.relationship('CartItem', backref='cart', lazy=True)
+
 
     def __repr__(self):
         return f"<Cart for User {self.user_id}>"
@@ -139,7 +141,7 @@ class Order(db.Model):
     __tablename__ = 'orders'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Corrected
     total_price = db.Column(db.Float, nullable=False)
     date = db.Column(db.DateTime, nullable=False)
     status = db.Column(db.String(50), nullable=False, default='Pending')
@@ -185,10 +187,11 @@ class Review(db.Model):
     __tablename__ = 'reviews'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    cologne_id = db.Column(db.Integer, db.ForeignKey('cologne.id'), nullable=False)  # Corrected table name
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Corrected
+    cologne_id = db.Column(db.Integer, db.ForeignKey('cologne.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.Text)
+
 
     def __init__(self, user_id: int, cologne_id: int, rating: int, comment: str = None):
         self.user_id = user_id
