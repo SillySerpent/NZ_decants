@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart - NZ Decants</title>
+    <link rel="stylesheet" href="static/css/cart.css" />
+    <link rel="stylesheet" href="static/css/nav_bar.css">
+    <link rel="stylesheet" href="static/css/main_menu.css">
+    <!-- Including Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          crossorigin="anonymous" />
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    {% include 'navbar.html' %}
+
+    <!-- Cart Content -->
+    <div class="cart-container">
+        <h2>Your Shopping Cart</h2>
+        <div class="cart-items">
+            <!-- Example of a cart item -->
+            <div class="cart-item">
+                <img src="static/images/product2.jpg" alt="Product Image">
+                <div class="item-details">
+                    <h3>Fiery Passion</h3>
+                    <p>Price: $89.99</p>
+                </div>
+                <div class="item-quantity">
+                    <button class="quantity-btn decrease">-</button>
+                    <input type="number" value="1" min="1">
+                    <button class="quantity-btn increase">+</button>
+                </div>
+                <div class="item-actions">
+                    <button class="remove-item"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+            <!-- Repeat for other cart items -->
+        </div>
+        <div class="cart-summary">
+            <h3>Total: $89.99</h3>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <!-- JavaScript Files -->
+    <script src="static/js/cart.js"></script>
+
+</body>
+</html>

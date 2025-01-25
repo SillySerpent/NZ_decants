@@ -3,71 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <title>NZ Decants - Premium Colognes</title>
-    <link rel="stylesheet" href="static/main_menu.css">
+    <link rel="stylesheet" href="static/css/main_menu.css">
+    <!-- Including Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-eN5z6Ti0YxJ1dVZVZJq2WaG8rgdbuf8+04EAv9LmYqZ3/Wvsbq1D9K3jeoHKb6r9" crossorigin="anonymous" />
 </head>
 <body>
 
-<div>
-    {% include 'nav_bar.html' %}
-</div>
+    <!-- Navigation Bar -->
+    {% include 'navbar.html' %}
 
-<header class="hero">
-    <div class="hero-content">
-        <h1>Welcome to NZ Decants</h1>
-        <p>Explore our curated selection of premium colognes, discover your signature scent today!</p>
-        <a href="{{ url_for('browse_page_blueprint.browse_page') }}" class="button">Shop Now</a>
-    </div>
-</header>
+    <!-- Hero Section with Carousel -->
+    <header class="hero">
+        <div class="hero-carousel">
+            <div class="carousel-slide active" style="background-image: url('vintage-fragrance-banner.jpg');">
+                <div class="hero-content">
+                    <h1>Welcome to NZ Decants</h1>
+                    <p>Explore our curated selection of premium colognes, discover your signature scent today!</p>
+                    <a href="{{ url_for('browse_page_blueprint.browse_page') }}" class="button">Shop Now</a>
+                </div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('static/images/hero2.jpg');">
+                <div class="hero-content">
+                    <h1>Exclusive Fragrances</h1>
+                    <p>Handpicked colognes from around the world just for you.</p>
+                    <a href="{{ url_for('browse_page_blueprint.browse_page') }}" class="button">Discover More</a>
+                </div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('static/images/hero3.jpg');">
+                <div class="hero-content">
+                    <h1>New Arrivals</h1>
+                    <p>Check out the latest additions to our collection.</p>
+                    <a href="{{ url_for('browse_page_blueprint.browse_page') }}" class="button">View New Arrivals</a>
+                </div>
+            </div>
+            <!-- Carousel navigation -->
+            <div class="carousel-nav">
+                <span class="carousel-dot active"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+            </div>
+        </div>
+    </header>
 
-<section class="categories">
-    <h2>Shop by Fragrance Category</h2>
-    <div class="category-list">
-        <div class="category">
-            <img src="../static/photos_for_main_menu/woody.png" alt="Woody Colognes">
-            <p>Woody</p>
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <h2>Shop by Fragrance Category</h2>
+        <div class="category-list">
+            <a href="#" class="category">
+                <img src="static/images/photos_for_main_menu/woody.png" alt="Woody Colognes">
+                <p>Woody</p>
+            </a>
+            <a href="#" class="category">
+                <img src="static/images/photos_for_main_menu/citrus.png" alt="Citrus Colognes">
+                <p>Citrus</p>
+            </a>
+            <a href="#" class="category">
+                <img src="static/images/photos_for_main_menu/floral.png" alt="Floral Colognes">
+                <p>Floral</p>
+            </a>
+            <a href="#" class="category">
+                <img src="static/images/photos_for_main_menu/species.png" alt="Spicy Colognes">
+                <p>Spicy</p>
+            </a>
         </div>
-        <div class="category">
-            <img src="../static/photos_for_main_menu/citrus.png" alt="Citrus Colognes">
-            <p>Citrus</p>
-        </div>
-        <div class="category">
-            <img src="../static/photos_for_main_menu/floral.png" alt="Floral Colognes">
-            <p>Floral</p>
-        </div>
-        <div class="category">
-            <img src="../static/photos_for_main_menu/species.png" alt="Spicy Colognes">
-            <p>Spicy</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section class="products">
-    <h2>Featured Colognes</h2>
-    <div class="product-list">
-        <div class="product">
-            <img src="product1.jpg" alt="Cologne 1">
-            <h3>Cool Breeze</h3>
-            <p>$59.99</p>
-            <button class="button">Add to Cart</button>
+    <!-- Featured Products Section -->
+    <section class="products">
+        <h2>Featured Colognes</h2>
+        <div class="product-list">
+            <!-- Product Cards -->
+            <div class="product">
+                <img src="static/images/product1.jpg" alt="Cologne 1">
+                <h3>Cool Breeze</h3>
+                <p>$59.99</p>
+                <button class="button add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="static/images/product2.jpg" alt="Cologne 2">
+                <h3>Fiery Passion</h3>
+                <p>$89.99</p>
+                <button class="button add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="static/images/product3.jpg" alt="Cologne 3">
+                <h3>Golden Amber</h3>
+                <p>$75.00</p>
+                <button class="button add-to-cart">Add to Cart</button>
+            </div>
+            <!-- More products to fill the page -->
+            <div class="product">
+                <img src="static/images/product4.jpg" alt="Cologne 4">
+                <h3>Midnight Musk</h3>
+                <p>$65.50</p>
+                <button class="button add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="static/images/product5.jpg" alt="Cologne 5">
+                <h3>Ocean Wave</h3>
+                <p>$70.25</p>
+                <button class="button add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="static/images/product6.jpg" alt="Cologne 6">
+                <h3>Silver Mountain</h3>
+                <p>$80.00</p>
+                <button class="button add-to-cart">Add to Cart</button>
+            </div>
         </div>
-        <div class="product">
-            <img src="product2.jpg" alt="Cologne 2">
-            <h3>Fiery Passion</h3>
-            <p>$89.99</p>
-            <button class="button">Add to Cart</button>
+        <div class="more-products">
+            <a href="{{ url_for('browse_page_blueprint.browse_page') }}" class="button">View All Products</a>
         </div>
-        <div class="product">
-            <img src="product3.jpg" alt="Cologne 3">
-            <h3>Golden Amber</h3>
-            <p>$75.00</p>
-            <button class="button">Add to Cart</button>
-        </div>
-    </div>
-</section>
+    </section>
 
-<footer class="footer">
-    <p>&copy; 2025 NZ Decants. All rights reserved.</p>
-</footer>
+    <!-- Newsletter Subscription Section -->
+    <section class="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for the latest updates and exclusive offers.</p>
+        <form action="#" method="post" class="newsletter-form">
+            <input type="email" name="email" placeholder="Enter your email address" required>
+            <button type="submit" class="button">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer with Contact Information -->
+    {% include 'footer.html' %}
+
+    <!-- JavaScript Files -->
+    <script src="static/js/script_main_menu.js"></script>
+    <script src="static/js/carousel.js"></script>
+    <script src="static/js/menu_toggle.js"></script>
+    <script src="static/js/add_to_cart.js"></script>
 
 </body>
 </html>

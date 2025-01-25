@@ -19,7 +19,7 @@ class AbstractRepository(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_colognes(self):
+    def get_all_colognes(self):
         """ Returns list of colognes objects"""
         raise NotImplementedError
 

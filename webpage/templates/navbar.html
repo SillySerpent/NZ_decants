@@ -1,0 +1,25 @@
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="nav-logo">
+        <a href="{{ url_for('home_page_blueprint.home_page') }}">NZ Decants</a>
+    </div>
+    <ul class="navbar-menu">
+        <li><a href="{{ url_for('home_page_blueprint.home_page') }}">Home</a></li>
+        <li><a href="{{ url_for('browse_page_blueprint.browse_page') }}">Browse</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-icons">
+        <a href="#"><i class="fas fa-search"></i></a>
+        <a href=#><i class="fas fa-heart"></i></a>
+        <a href="{{ url_for('cart_blueprint.cart') }}">Cart<i class="fas fa-shopping-cart"></i></a>
+        <!-- User Authentication Icons -->
+
+
+
+    </div>
+    <!-- Mobile menu toggle -->
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+</nav>

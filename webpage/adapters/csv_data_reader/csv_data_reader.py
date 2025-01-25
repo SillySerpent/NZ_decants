@@ -53,8 +53,3 @@ class CsvDataReader:
             if cologne:  # Only add if the Cologne object is created successfully
                 self.temp_storage.append(cologne)
 
-    def populate_db(self):
-        rows = (self.create_cologne(row) for row in self.read_csv())
-        colognes = [c for c in rows if c is not None]
-        self.db.session.bulk_save_objects(colognes)
-        self.db.session.commit()

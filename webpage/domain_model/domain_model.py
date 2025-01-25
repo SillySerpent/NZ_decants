@@ -16,17 +16,14 @@ class Cologne(db.Model):
     sex = db.Column(db.String, nullable=True)
     discount = db.Column(db.Float, nullable=True, default=0.0)
     featured = db.Column(db.Boolean, nullable=True, default=False)
-    availability = db.Column(db.Integer, nullable=True)
+    availability = db.Column(db.Boolean, nullable=True)
     rating = db.Column(db.Integer, nullable=True)
     notes = db.Column(db.String, nullable=True)
     release_year = db.Column(db.Integer, nullable=True)
     concentration = db.Column(db.String, nullable=True)
 
-
     def __init__(self, price, name, size, picture_url, description, season,
                  sex, rating, notes, release_year, concentration):
-
-        self.id = id
         self.price = price
         self.name = name
         self.size = size
@@ -42,6 +39,11 @@ class Cologne(db.Model):
         self.release_year = release_year
         self.concentration = concentration
 
+    def apply_discount(self):
+        if self.discount:
+            return self.price * (1 - self.discount / 100)
+        return self.price
+
     def __str__(self):
         return (
             f"Cologne: {self.name}\n"
@@ -50,14 +52,6 @@ class Cologne(db.Model):
             f"Price: ${self.price:.2f}\n"
             f"Description: {self.description}\n"
         )
-
-    def is_available(self):
-        return self.availability
-
-    def apply_discount(self):
-        if self.discount:
-            return self.price * (1 - self.discount / 100)
-        return self.price
 
 
 class User(db.Model):
@@ -121,7 +115,7 @@ class CartItem(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     cart_id = db.Column(db.Integer, db.ForeignKey('carts.id'), nullable=False)
-    cologne_id = db.Column(db.Integer, db.ForeignKey('colognes.id'), nullable=False)
+    cologne_id = db.Column(db.Integer, db.ForeignKey('cologne.id'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False, default=1)
 
     def __init__(self, cart_id: int, cologne_id: int, quantity: int):
@@ -166,7 +160,7 @@ class OrderItem(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'), nullable=False)
-    cologne_id = db.Column(db.Integer, db.ForeignKey('colognes.id'), nullable=False)
+    cologne_id = db.Column(db.Integer, db.ForeignKey('cologne.id'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False, default=1)
     price_at_purchase = db.Column(db.Float, nullable=False)
 
@@ -188,7 +182,7 @@ class Review(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    cologne_id = db.Column(db.Integer, db.ForeignKey('colognes.id'), nullable=False)
+    cologne_id = db.Column(db.Integer, db.ForeignKey('cologne.id'), nullable=False)  # Corrected table name
     rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.Text)
 
@@ -206,5 +200,6 @@ class Review(db.Model):
 
     def update_rating(self, new_rating: int):
         self.rating = new_rating
+
 
 

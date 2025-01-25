@@ -1,58 +1,58 @@
 price,name,size,picture_url,description,season,sex,rating,notes,release_year,concentration
-85.00,Acqua di Gio,100,https://example.com/acqua_di_gio.jpg,A fresh and aquatic fragrance.,Summer,['Men'],90,"['Bergamot', 'Neroli', 'Jasmine']",1996,Eau de Toilette
-120.00,Chanel No. 5,50,https://example.com/chanel_no5.jpg,A timeless classic with floral notes.,All Year,['Women'],95,"['Ylang-Ylang', 'Rose', 'Jasmine']",1921,Eau de Parfum
-75.00,Dior Sauvage,100,https://example.com/dior_sauvage.jpg,A bold and spicy fragrance.,All Year,['Men'],92,"['Bergamot', 'Pepper', 'Ambroxan']",2015,Eau de Toilette
-60.00,Versace Eros,100,https://example.com/versace_eros.jpg,A vibrant and sensual fragrance.,Summer,['Men'],88,"['Mint', 'Lemon', 'Vanilla']",2012,Eau de Toilette
-100.00,Marc Jacobs Daisy,50,https://example.com/marc_jacobs_daisy.jpg,A playful and floral scent.,Spring,['Women'],89,"['Strawberry', 'Violet Leaves', 'Jasmine']",2007,Eau de Toilette
-150.00,Tom Ford Black Orchid,100,https://example.com/tom_ford_black_orchid.jpg,A luxurious and dark fragrance.,Fall,['Unisex'],93,"['Black Truffle', 'Bergamot', 'Black Orchid']",2006,Eau de Parfum
-95.00,Yves Saint Laurent Black Opium,90,https://example.com/ysl_black_opium.jpg,A warm and sweet fragrance.,Fall,['Women'],91,"['Coffee', 'Vanilla', 'White Flowers']",2014,Eau de Parfum
-70.00,Calvin Klein CK One,100,https://example.com/ck_one.jpg,A refreshing unisex fragrance.,Summer,['Unisex'],85,"['Pineapple', 'Green Tea', 'Papaya']",1994,Eau de Toilette
-80.00,Gucci Guilty,90,https://example.com/gucci_guilty.jpg,A bold and provocative fragrance.,All Year,['Women'],87,"['Pink Pepper', 'Lilac', 'Patchouli']",2010,Eau de Toilette
-110.00,Creed Aventus,100,https://example.com/creed_aventus.jpg,A fruity and smoky fragrance.,All Year,['Men'],94,"['Pineapple', 'Birch', 'Musk']",2010,Eau de Parfum
-95.00,Paco Rabanne 1 Million,100,https://example.com/paco_1_million.jpg,A spicy and woody fragrance.,Fall,['Men'],90,"['Grapefruit', 'Mint', 'Leather']",2008,Eau de Toilette
-65.00,Dolce & Gabbana Light Blue,100,https://example.com/dg_light_blue.jpg,A fresh and fruity fragrance.,Summer,['Women'],88,"['Sicilian Lemon', 'Apple', 'Cedar']",2001,Eau de Toilette
-70.00,Burberry Brit,100,https://example.com/burberry_brit.jpg,A warm and spicy fragrance.,Fall,['Women'],86,"['Lime', 'Ivy', 'Amber']",2003,Eau de Toilette
-90.00,Hermès Terre d'Hermès,75,https://example.com/hermes_terre.jpg,A woody and earthy fragrance.,All Year,['Men'],92,"['Grapefruit', 'Benzoin', 'Mineral Notes']",2006,Eau de Toilette
-130.00,Viktor & Rolf Flowerbomb,100,https://example.com/viktor_flowerbomb.jpg,A floral explosion fragrance.,All Year,['Women'],94,"['Tea', 'Jasmine', 'Orange Blossom']",2005,Eau de Parfum
-85.00,Jean Paul Gaultier Le Male,125,https://example.com/jpg_le_male.jpg,A fresh and sweet fragrance.,Fall,['Men'],89,"['Mint', 'Lavender', 'Vanilla']",1995,Eau de Toilette
-100.00,Chanel Bleu de Chanel,100,https://example.com/chanel_bleu.jpg,A woody aromatic fragrance.,All Year,['Men'],91,"['Grapefruit', 'Cedar', 'Labdanum']",2010,Eau de Toilette
-80.00,Givenchy Gentlemen Only,100,https://example.com/givenchy_gentlemen.jpg,A modern and woody fragrance.,Fall,['Men'],88,"['Pepper', 'Patchouli', 'Cedar']",2013,Eau de Toilette
-75.00,Prada Luna Rossa,100,https://example.com/prada_luna_rossa.jpg,A fresh and sporty fragrance.,Spring,['Men'],87,"['Bergamot', 'Lavender', 'Ambroxan']",2012,Eau de Toilette
-65.00,Issey Miyake L'Eau d'Issey,100,https://example.com/issey_leau.jpg,A fresh aquatic fragrance.,Summer,['Women'],90,"['Lotus', 'Rose', 'Cedar']",1992,Eau de Toilette
-95.00,Bvlgari Man in Black,100,https://example.com/bvlgari_man_black.jpg,A warm and spicy fragrance.,Fall,['Men'],89,"['Rum', 'Tuberose', 'Leather']",2014,Eau de Parfum
-70.00,Azzaro Wanted,100,https://example.com/azzaro_wanted.jpg,A woody aromatic fragrance.,Summer,['Men'],88,"['Lemon', 'Ginger', 'Tonka Bean']",2016,Eau de Toilette
-85.00,Narciso Rodriguez For Him,100,https://example.com/narciso_for_him.jpg,A musky and woody fragrance.,All Year,['Men'],90,"['Musk', 'Amber', 'Patchouli']",2007,Eau de Toilette
-75.00,Armani Code,75,https://example.com/armani_code.jpg,A seductive and warm fragrance.,Fall,['Men'],89,"['Bergamot', 'Star Anise', 'Tobacco']",2004,Eau de Toilette
-150.00,Tom Ford Oud Wood,100,https://example.com/tom_ford_oud.jpg,A rich and exotic fragrance.,All Year,['Unisex'],93,"['Oud', 'Sandalwood', 'Vanilla']",2007,Eau de Parfum
-100.00,Maison Margiela Replica By the Fireplace,100,https://example.com/margiela_by_fireplace.jpg,A warm and cozy fragrance.,Fall,['Unisex'],91,"['Chestnut', 'Vanilla', 'Clove']",2015,Eau de Toilette
-80.00,Marc Jacobs Decadence,100,https://example.com/marc_jacobs_decadence.jpg,A luxurious and sensual fragrance.,Fall,['Women'],88,"['Plum', 'Saffron', 'Iris']",2015,Eau de Parfum
-70.00,Lacoste Blanc,100,https://example.com/lacoste_blanc.jpg,A fresh and clean fragrance.,Summer,['Men'],85,"['Grapefruit', 'Rose', 'Cedar']",2011,Eau de Toilette
-90.00,Ralph Lauren Polo Blue,125,https://example.com/polo_blue.jpg,A fresh aquatic fragrance.,Summer,['Men'],89,"['Melon', 'Cucumber', 'Basil']",2003,Eau de Toilette
-85.00,Hugo Boss Bottled,100,https://example.com/hugo_boss_bottled.jpg,A warm and spicy fragrance.,Fall,['Men'],88,"['Apple', 'Cinnamon', 'Vanilla']",1998,Eau de Toilette
-75.00,Versace Dylan Blue,100,https://example.com/versace_dylan.jpg,A fresh and aquatic fragrance.,Summer,['Men'],87,"['Bergamot', 'Fig Leaves', 'Patchouli']",2016,Eau de Toilette
-95.00,Calvin Klein Eternity,100,https://example.com/ck_eternity.jpg,A classic and romantic fragrance.,All Year,['Women'],90,"['Mandarin', 'Jasmine', 'Sandalwood']",1988,Eau de Toilette
-80.00,Burberry My Burberry,90,https://example.com/burberry_my.jpg,A floral and fresh fragrance.,Spring,['Women'],89,"['Bergamot', 'Peach Blossom', 'Rose']",2014,Eau de Parfum
-100.00,Dolce & Gabbana The One,75,https://example.com/dg_the_one.jpg,A warm and oriental fragrance.,Fall,['Women'],92,"['Peach', 'Lily', 'Vanilla']",2006,Eau de Parfum
-70.00,Mugler Alien,60,https://example.com/mugler_alien.jpg,A mysterious and floral fragrance.,All Year,['Women'],88,"['Jasmine', 'Woodsy Notes', 'Amber']",2005,Eau de Parfum
-85.00,Yves Saint Laurent L'Homme,100,https://example.com/ysl_lhomme.jpg,A fresh and woody fragrance.,All Year,['Men'],90,"['Ginger', 'Citrus', 'Vetiver']",2006,Eau de Toilette
-75.00,Chloé Eau de Parfum,75,https://example.com/chloe_eau.jpg,A fresh and floral fragrance.,Spring,['Women'],89,"['Peony', 'Rose', 'Honey']",2008,Eau de Parfum
-60.00,Acqua di Parma Colonia,100,https://example.com/acqua_parma.jpg,A classic citrus fragrance.,Summer,['Unisex'],91,"['Bergamot', 'Lemon', 'Lavender']",1916,Eau de Cologne
-95.00,Prada Candy,80,https://example.com/prada_candy.jpg,A sweet and gourmand fragrance.,Fall,['Women'],88,"['Caramel', 'Musk', 'Vanilla']",2011,Eau de Parfum
-80.00,Victoria's Secret Bombshell,100,https://example.com/victoria_bombshell.jpg,A fruity and floral fragrance.,All Year,['Women'],87,"['Passionfruit', 'Peony', 'Vanilla']",2010,Eau de Parfum
-100.00,Chanel Chance Eau Tendre,100,https://example.com/chanel_chance.jpg,A fresh and fruity fragrance.,Spring,['Women'],90,"['Grapefruit', 'Quince', 'Jasmine']",2010,Eau de Toilette
-75.00,Calvin Klein Obsessed,100,https://example.com/ck_obsessed.jpg,A warm and aromatic fragrance.,All Year,['Men'],88,"['Lavender', 'Amber', 'Patchouli']",2017,Eau de Toilette
-90.00,Tom Ford Noir,100,https://example.com/tom_ford_noir.jpg,A warm and spicy fragrance.,Fall,['Men'],92,"['Bergamot', 'Black Pepper', 'Amber']",2012,Eau de Parfum
-70.00,Jimmy Choo Man,100,https://example.com/jimmy_choo_man.jpg,A fresh and woody fragrance.,Summer,['Men'],86,"['Pineapple', 'Lavender', 'Patchouli']",2014,Eau de Toilette
-85.00,Salvatore Ferragamo Signorina,100,https://example.com/salvatore_signorina.jpg,A floral and fruity fragrance.,Spring,['Women'],89,"['Blackcurrant', 'Peony', 'Rose']",2012,Eau de Parfum
-95.00,Versace Bright Crystal,90,https://example.com/versace_bright_crystal.jpg,A fresh and floral fragrance.,Spring,['Women'],90,"['Pomegranate', 'Peony', 'Lotus']",2006,Eau de Toilette
-75.00,Marc Jacobs Splash,100,https://example.com/marc_jacobs_splash.jpg,A fresh and fruity fragrance.,Summer,['Unisex'],88,"['Cucumber', 'Lemon', 'Watermelon']",2006,Eau de Toilette
-100.00,Acqua di Gioia,100,https://example.com/acqua_di_gioia.jpg,A fresh and aquatic fragrance.,Summer,['Women'],91,"['Mint', 'Lemon', 'Jasmine']",2010,Eau de Toilette
-80.00,Kenzo Flower,100,https://example.com/kenzo_flower.jpg,A floral and sweet fragrance.,Spring,['Women'],89,"['Poppy', 'Rose', 'Vanilla']",2000,Eau de Parfum
-70.00,Chanel Allure Homme,100,https://example.com/chanel_allure_homme.jpg,A warm and spicy fragrance.,Fall,['Men'],90,"['Citrus', 'Nutmeg', 'Vanilla']",1999,Eau de Toilette
-85.00,Givenchy Play,100,https://example.com/givenchy_play.jpg,A fresh and woody fragrance.,All Year,['Men'],88,"['Bergamot', 'Mandarin', 'Coffee']",2008,Eau de Toilette
-75.00,Michael Kors Wonderlust,100,https://example.com/michael_kors_wonderlust.jpg,A warm and floral fragrance.,Spring,['Women'],89,"['Bergamot', 'Floral Notes', 'Coconut']",2016,Eau de Parfum
-90.00,Dior Homme,100,https://example.com/dior_homme.jpg,A woody and floral fragrance.,Fall,['Men'],91,"['Iris', 'Cacao', 'Amber']",2005,Eau de Toilette
-70.00,Prada Infusion d'Iris,100,https://example.com/prada_infusion.jpg,A fresh and floral fragrance.,Spring,['Unisex'],88,"['Iris', 'Citrus', 'Resins']",2007,Eau de Toilette
-85.00,Calvin Klein Euphoria,100,https://example.com/ck_euphoria.jpg,A warm and spicy fragrance.,Fall,['Women'],90,"['Pomegranate', 'Lotus', 'Amber']",2005,Eau de Parfum
-100.00,Roberto Cavalli Paradiso,75,https://example.com/roberto_paradiso.jpg,A floral and fruity fragrance.,Summer,['Women'],89,"['Bergamot', 'Jasmine', 'Cedar']",2015,Eau de Parfum
-75.00,Escada Cherry in the Air,100,https://example.com/escada_cherry.jpg,A fruity and floral fragrance.,NULL,NULL,NULL,NULL,NULL,NULL
+85.00,Acqua di Gio,100,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT46q57hqMeW7Jw60_Sw-j6lJTU-Vo3h6LU9g&s,A fresh and aquatic fragrance.,Summer,['Men'],90,"['Bergamot', 'Neroli', 'Jasmine']",1996,Eau de Toilette
+120.00,Chanel No. 5,50,https://www.fragrantica.com/images/perfume/2/2.jpg,A timeless classic with floral notes.,All Year,['Women'],95,"['Ylang-Ylang', 'Rose', 'Jasmine']",1921,Eau de Parfum
+75.00,Dior Sauvage,100,https://www.fragrantica.com/images/perfume/3/3.jpg,A bold and spicy fragrance.,All Year,['Men'],92,"['Bergamot', 'Pepper', 'Ambroxan']",2015,Eau de Toilette
+60.00,Versace Eros,100,https://www.fragrantica.com/images/perfume/4/4.jpg,A vibrant and sensual fragrance.,Summer,['Men'],88,"['Mint', 'Lemon', 'Vanilla']",2012,Eau de Toilette
+100.00,Marc Jacobs Daisy,50,https://www.fragrantica.com/images/perfume/5/5.jpg,A playful and floral scent.,Spring,['Women'],89,"['Strawberry', 'Violet Leaves', 'Jasmine']",2007,Eau de Toilette
+150.00,Tom Ford Black Orchid,100,https://www.fragrantica.com/images/perfume/6/6.jpg,A luxurious and dark fragrance.,Fall,['Unisex'],93,"['Black Truffle', 'Bergamot', 'Black Orchid']",2006,Eau de Parfum
+95.00,Yves Saint Laurent Black Opium,90,https://www.fragrantica.com/images/perfume/7/7.jpg,A warm and sweet fragrance.,Fall,['Women'],91,"['Coffee', 'Vanilla', 'White Flowers']",2014,Eau de Parfum
+70.00,Calvin Klein CK One,100,https://www.fragrantica.com/images/perfume/8/8.jpg,A refreshing unisex fragrance.,Summer,['Unisex'],85,"['Pineapple', 'Green Tea', 'Papaya']",1994,Eau de Toilette
+80.00,Gucci Guilty,90,https://www.fragrantica.com/images/perfume/9/9.jpg,A bold and provocative fragrance.,All Year,['Women'],87,"['Pink Pepper', 'Lilac', 'Patchouli']",2010,Eau de Toilette
+110.00,Creed Aventus,100,https://www.fragrantica.com/images/perfume/10/10.jpg,A fruity and smoky fragrance.,All Year,['Men'],94,"['Pineapple', 'Birch', 'Musk']",2010,Eau de Parfum
+95.00,Paco Rabanne 1 Million,100,https://www.fragrantica.com/images/perfume/11/11.jpg,A spicy and woody fragrance.,Fall,['Men'],90,"['Grapefruit', 'Mint', 'Leather']",2008,Eau de Toilette
+65.00,Dolce & Gabbana Light Blue,100,https://www.fragrantica.com/images/perfume/12/12.jpg,A fresh and fruity fragrance.,Summer,['Women'],88,"['Sicilian Lemon', 'Apple', 'Cedar']",2001,Eau de Toilette
+70.00,Burberry Brit,100,https://www.fragrantica.com/images/perfume/13/13.jpg,A warm and spicy fragrance.,Fall,['Women'],86,"['Lime', 'Ivy', 'Amber']",2003,Eau de Toilette
+90.00,Hermès Terre d'Hermès,75,https://www.fragrantica.com/images/perfume/14/14.jpg,A woody and earthy fragrance.,All Year,['Men'],92,"['Grapefruit', 'Benzoin', 'Mineral Notes']",2006,Eau de Toilette
+130.00,Viktor & Rolf Flowerbomb,100,https://www.fragrantica.com/images/perfume/15/15.jpg,A floral explosion fragrance.,All Year,['Women'],94,"['Tea', 'Jasmine', 'Orange Blossom']",2005,Eau de Parfum
+85.00,Jean Paul Gaultier Le Male,125,https://www.fragrantica.com/images/perfume/16/16.jpg,A fresh and sweet fragrance.,Fall,['Men'],89,"['Mint', 'Lavender', 'Vanilla']",1995,Eau de Toilette
+100.00,Chanel Bleu de Chanel,100,https://www.fragrantica.com/images/perfume/17/17.jpg,A woody aromatic fragrance.,All Year,['Men'],91,"['Grapefruit', 'Cedar', 'Labdanum']",2010,Eau de Toilette
+80.00,Givenchy Gentlemen Only,100,https://www.fragrantica.com/images/perfume/18/18.jpg,A modern and woody fragrance.,Fall,['Men'],88,"['Pepper', 'Patchouli', 'Cedar']",2013,Eau de Toilette
+75.00,Prada Luna Rossa,100,https://www.fragrantica.com/images/perfume/19/19.jpg,A fresh and sporty fragrance.,Spring,['Men'],87,"['Bergamot', 'Lavender', 'Ambroxan']",2012,Eau de Toilette
+65.00,Issey Miyake L'Eau d'Issey,100,https://www.fragrantica.com/images/perfume/20/20.jpg,A fresh aquatic fragrance.,Summer,['Women'],90,"['Lotus', 'Rose', 'Cedar']",1992,Eau de Toilette
+95.00,Bvlgari Man in Black,100,https://www.fragrantica.com/images/perfume/21/21.jpg,A warm and spicy fragrance.,Fall,['Men'],89,"['Rum', 'Tuberose', 'Leather']",2014,Eau de Parfum
+70.00,Azzaro Wanted,100,https://www.fragrantica.com/images/perfume/22/22.jpg,A woody aromatic fragrance.,Summer,['Men'],88,"['Lemon', 'Ginger', 'Tonka Bean']",2016,Eau de Toilette
+85.00,Narciso Rodriguez For Him,100,https://www.fragrantica.com/images/perfume/23/23.jpg,A musky and woody fragrance.,All Year,['Men'],90,"['Musk', 'Amber', 'Patchouli']",2007,Eau de Toilette
+75.00,Armani Code,75,https://www.fragrantica.com/images/perfume/24/24.jpg,A seductive and warm fragrance.,Fall,['Men'],89,"['Bergamot', 'Star Anise', 'Tobacco']",2004,Eau de Toilette
+150.00,Tom Ford Oud Wood,100,https://www.fragrantica.com/images/perfume/25/25.jpg,A rich and exotic fragrance.,All Year,['Unisex'],93,"['Oud', 'Sandalwood', 'Vanilla']",2007,Eau de Parfum
+100.00,Maison Margiela Replica By the Fireplace,100,https://www.fragrantica.com/images/perfume/26/26.jpg,A warm and cozy fragrance.,Fall,['Unisex'],91,"['Chestnut', 'Vanilla', 'Clove']",2015,Eau de Toilette
+80.00,Marc Jacobs Decadence,100,https://www.fragrantica.com/images/perfume/27/27.jpg,A luxurious and sensual fragrance.,Fall,['Women'],88,"['Plum', 'Saffron', 'Iris']",2015,Eau de Parfum
+70.00,Lacoste Blanc,100,https://www.fragrantica.com/images/perfume/28/28.jpg,A fresh and clean fragrance.,Summer,['Men'],85,"['Grapefruit', 'Rose', 'Cedar']",2011,Eau de Toilette
+90.00,Ralph Lauren Polo Blue,125,https://www.fragrantica.com/images/perfume/29/29.jpg,A fresh aquatic fragrance.,Summer,['Men'],89,"['Melon', 'Cucumber', 'Basil']",2003,Eau de Toilette
+85.00,Hugo Boss Bottled,100,https://www.fragrantica.com/images/perfume/30/30.jpg,A warm and spicy fragrance.,Fall,['Men'],88,"['Apple', 'Cinnamon', 'Vanilla']",1998,Eau de Toilette
+75.00,Versace Dylan Blue,100,https://www.fragrantica.com/images/perfume/31/31.jpg,A fresh and aquatic fragrance.,Summer,['Men'],87,"['Bergamot', 'Fig Leaves', 'Patchouli']",2016,Eau de Toilette
+95.00,Calvin Klein Eternity,100,https://www.fragrantica.com/images/perfume/32/32.jpg,A classic and romantic fragrance.,All Year,['Women'],90,"['Mandarin', 'Jasmine', 'Sandalwood']",1988,Eau de Toilette
+80.00,Burberry My Burberry,90,https://www.fragrantica.com/images/perfume/33/33.jpg,A floral and fresh fragrance.,Spring,['Women'],89,"['Bergamot', 'Peach Blossom', 'Rose']",2014,Eau de Parfum
+100.00,Dolce & Gabbana The One,75,https://www.fragrantica.com/images/perfume/34/34.jpg,A warm and oriental fragrance.,Fall,['Women'],92,"['Peach', 'Lily', 'Vanilla']",2006,Eau de Parfum
+70.00,Mugler Alien,60,https://www.fragrantica.com/images/perfume/35/35.jpg,A mysterious and floral fragrance.,All Year,['Women'],88,"['Jasmine', 'Woodsy Notes', 'Amber']",2005,Eau de Parfum
+85.00,Yves Saint Laurent L'Homme,100,https://www.fragrantica.com/images/perfume/36/36.jpg,A fresh and woody fragrance.,All Year,['Men'],90,"['Ginger', 'Citrus', 'Vetiver']",2006,Eau de Toilette
+75.00,Chloé Eau de Parfum,75,https://www.fragrantica.com/images/perfume/37/37.jpg,A fresh and floral fragrance.,Spring,['Women'],89,"['Peony', 'Rose', 'Honey']",2008,Eau de Parfum
+60.00,Acqua di Parma Colonia,100,https://www.fragrantica.com/images/perfume/38/38.jpg,A classic citrus fragrance.,Summer,['Unisex'],91,"['Bergamot', 'Lemon', 'Lavender']",1916,Eau de Cologne
+95.00,Prada Candy,80,https://www.fragrantica.com/images/perfume/39/39.jpg,A sweet and gourmand fragrance.,Fall,['Women'],88,"['Caramel', 'Musk', 'Vanilla']",2011,Eau de Parfum
+80.00,Victoria's Secret Bombshell,100,https://www.fragrantica.com/images/perfume/40/40.jpg,A fruity and floral fragrance.,All Year,['Women'],87,"['Passionfruit', 'Peony', 'Vanilla']",2010,Eau de Parfum
+100.00,Chanel Chance Eau Tendre,100,https://www.fragrantica.com/images/perfume/41/41.jpg,A fresh and fruity fragrance.,Spring,['Women'],90,"['Grapefruit', 'Quince', 'Jasmine']",2010,Eau de Toilette
+75.00,Calvin Klein Obsessed,100,https://www.fragrantica.com/images/perfume/42/42.jpg,A warm and aromatic fragrance.,All Year,['Men'],88,"['Lavender', 'Amber', 'Patchouli']",2017,Eau de Toilette
+90.00,Tom Ford Noir,100,https://www.fragrantica.com/images/perfume/43/43.jpg,A warm and spicy fragrance.,Fall,['Men'],92,"['Bergamot', 'Black Pepper', 'Amber']",2012,Eau de Parfum
+70.00,Jimmy Choo Man,100,https://www.fragrantica.com/images/perfume/44/44.jpg,A fresh and woody fragrance.,Summer,['Men'],86,"['Pineapple', 'Lavender', 'Patchouli']",2014,Eau de Toilette
+85.00,Salvatore Ferragamo Signorina,100,https://www.fragrantica.com/images/perfume/45/45.jpg,A floral and fruity fragrance.,Spring,['Women'],89,"['Blackcurrant', 'Peony', 'Rose']",2012,Eau de Parfum
+95.00,Versace Bright Crystal,90,https://www.fragrantica.com/images/perfume/46/46.jpg,A fresh and floral fragrance.,Spring,['Women'],90,"['Pomegranate', 'Peony', 'Lotus']",2006,Eau de Toilette
+75.00,Marc Jacobs Splash,100,https://www.fragrantica.com/images/perfume/47/47.jpg,A fresh and fruity fragrance.,Summer,['Unisex'],88,"['Cucumber', 'Lemon', 'Watermelon']",2006,Eau de Toilette
+100.00,Acqua di Gioia,100,https://www.fragrantica.com/images/perfume/48/48.jpg,A fresh and aquatic fragrance.,Summer,['Women'],91,"['Mint', 'Lemon', 'Jasmine']",2010,Eau de Toilette
+80.00,Kenzo Flower,100,https://www.fragrantica.com/images/perfume/49/49.jpg,A floral and sweet fragrance.,Spring,['Women'],89,"['Poppy', 'Rose', 'Vanilla']",2000,Eau de Parfum
+70.00,Chanel Allure Homme,100,https://www.fragrantica.com/images/perfume/50/50.jpg,A warm and spicy fragrance.,Fall,['Men'],90,"['Citrus', 'Nutmeg', 'Vanilla']",1999,Eau de Toilette
+85.00,Givenchy Play,100,https://www.fragrantica.com/images/perfume/51/51.jpg,A fresh and woody fragrance.,All Year,['Men'],88,"['Bergamot', 'Mandarin', 'Coffee']",2008,Eau de Toilette
+75.00,Michael Kors Wonderlust,100,https://www.fragrantica.com/images/perfume/52/52.jpg,A warm and floral fragrance.,Spring,['Women'],89,"['Bergamot', 'Floral Notes', 'Coconut']",2016,Eau de Parfum
+90.00,Dior Homme,100,https://www.fragrantica.com/images/perfume/53/53.jpg,A woody and floral fragrance.,Fall,['Men'],91,"['Iris', 'Cacao', 'Amber']",2005,Eau de Toilette
+70.00,Prada Infusion d'Iris,100,https://www.fragrantica.com/images/perfume/54/54.jpg,A fresh and floral fragrance.,Spring,['Unisex'],88,"['Iris', 'Citrus', 'Resins']",2007,Eau de Toilette
+85.00,Calvin Klein Euphoria,100,https://www.fragrantica.com/images/perfume/55/55.jpg,A warm and spicy fragrance.,Fall,['Women'],90,"['Pomegranate', 'Lotus', 'Amber']",2005,Eau de Parfum
+100.00,Roberto Cavalli Paradiso,75,https://www.fragrantica.com/images/perfume/56/56.jpg,A floral and fruity fragrance.,Summer,['Women'],89,"['Bergamot', 'Jasmine', 'Cedar']",2015,Eau de Parfum
+75.00,Escada Cherry in the Air,100,https://www.fragrantica.com/images/perfume/57/57.jpg,A fruity and floral fragrance.,Summer,['Women'],88,"['Cherry', 'Raspberry', 'Lemon']",2013,Eau de Toilette
