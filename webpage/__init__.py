@@ -32,7 +32,7 @@ def create_app():
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
-    login_manager.login_view = 'login'  # Redirect to login page if not authenticated
+    login_manager.login_view = 'routes_blueprint.login'
     login_manager.login_message_category = 'info'
 
     # --- User Loader for LoginManager ---
@@ -74,7 +74,6 @@ def create_app():
         from webpage.cart import cart
         app.register_blueprint(cart.cart_blueprint)
 
-        # Add blueprints for authentication
         from webpage.authentication import authentication
         app.register_blueprint(authentication.authentication_blueprint)
 
