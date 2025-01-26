@@ -7,13 +7,29 @@
   <link rel="stylesheet" href="static/css/main_menu.css">
   <link rel="stylesheet" href="static/css/nav_bar.css">
   <link rel="stylesheet" href="static/css/browse_page.css">
+  <link rel="stylesheet" href="static/css/flash_message.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>
   <!-- Navigation Bar -->
   {% include 'navbar.html' %}
+
   <script src="static/js/script_browse_page.js"></script>
+  <script src="static/js/flash_message.js"></script>
+
+  <div id="flash-messages">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-message {{ category }}">
+            <span>{{ message }}</span>
+            <button class="close-btn"><i class="fas fa-times"></i></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
 
   <!-- Main Content -->
   <main class="browse-content">
@@ -57,42 +73,41 @@
       </div>
     </section>
 
-    <!-- All Colognes -->
-    <section class="all-colognes">
-      <h2>Explore More Colognes</h2>
-      <div class="small-selection-wrapper">
+<!-- All Colognes -->
+<section class="all-colognes">
+  <h2>Explore More Colognes</h2>
+  <div class="small-selection-wrapper">
 
-        <div class="grid-container">
+    <div class="grid-container">
 
-            {% for cologne in colognes %}
-            <div class="card small">
-              <img src="{{ cologne.picture_url }}" alt="Cologne Photo">
-              <h2>{{ cologne.name }}</h2>
-              <p>{{ cologne.notes }}</p>
+        {% for cologne in colognes %}
+        <div class="card small">
+          <img src="{{ cologne.picture_url }}" alt="Cologne Photo">
+          <h2>{{ cologne.name }}</h2>
+          <p>{{ cologne.notes }}</p>
 
-              <!-- Add to Cart Form -->
-              <form action="{{ url_for('browse_page_blueprint.add_to_cart', cologne_id=cologne.id) }}" method="post">
-                {% if current_user.is_authenticated %}
-                  <!-- Include CSRF token if using CSRF protection -->
-                  <!-- Optional: Quantity input -->
-                  <button type="submit">Add to Cart</button>
-                {% else %}
-                    <button>
-                        <a href="{{ url_for('routes_blueprint.login') }}">Add to cart</a>
-                    </button>
-                {% endif %}
-              </form>
+            {% if current_user.is_authenticated %}
+                <!-- Add to Cart Form -->
+                <form action="{{ url_for('browse_page_blueprint.add_to_cart', cologne_id=cologne.id) }}" method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            {% else %}
+                <button>
+                    <a href="{{ url_for('authentication_blueprint.login') }}">Add to Cart</a>
+                </button>
+            {% endif %}
 
-            </div>
-            {% endfor %}
+        </div>
+        {% endfor %}
 
         </div>
 
-      </div>
-    </section>
+        </div>
+        </section>
 
-  </main>
-</body>
+        </main>
+    </body>
 </html>
 
 

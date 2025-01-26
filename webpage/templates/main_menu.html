@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="static/css/auth.css">
     <link rel="stylesheet" href="static/css/main_menu.css">
     <link rel="stylesheet" href="static/css/nav_bar.css">
+    <link rel="stylesheet" href="static/css/flash_message.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 </head>
@@ -13,6 +14,18 @@
 
     <!-- Navigation Bar -->
     {% include 'navbar.html' %}
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-message {{ category }}">
+            <span>{{ message }}</span>
+            <button class="close-btn"><i class="fas fa-times"></i></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
     <!-- Hero Section with Carousel -->
     <header class="hero">
@@ -136,6 +149,7 @@
     <script src="static/js/carousel.js"></script>
     <script src="static/js/menu_toggle.js"></script>
     <script src="static/js/add_to_cart.js"></script>
+    <script src="static/js/flash_message.js"></script>
 
 </body>
 </html>

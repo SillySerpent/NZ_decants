@@ -1,16 +1,17 @@
 import os
+from pathlib import Path
 
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
+from flask_wtf import CSRFProtect
 from sqlalchemy import inspect
 
-# Import your models and repositories
 from webpage.adapters.db_methods.populate_db import populate_db
 from webpage.adapters.db_methods.db_repository import SqlAlchemyRepository
 import webpage.adapters.repository as repo
-from webpage.domain_model.domain_model import db  # Assuming db is your SQLAlchemy instance
+from webpage.domain_model.domain_model import db
+from dotenv import load_dotenv
 
 
 bcrypt = Bcrypt()
@@ -20,13 +21,21 @@ def create_app():
     """Construct the core application."""
     app = Flask(__name__)
 
+    env_path = Path('.') / '.env'
+    load_dotenv(dotenv_path=env_path)
+
     # --- Configuration ---
     db_name = 'webpage_database.db'
     db_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), db_name)
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['DEBUG'] = True
-    app.config['SECRET_KEY'] = 'your-secret-key'  # Replace with your own secret key # Replace with your own secret key
+
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+    app.secret_key = os.environ.get('SECRET_KEY')
+
+    # Initialize CSRF protection
+    csrf = CSRFProtect(app)
 
     # --- Initialize Extensions ---
     db.init_app(app)

@@ -1,9 +1,9 @@
-from flask import render_template, url_for, flash, redirect, request, Blueprint
-from webpage import db, bcrypt
-from webpage.forms_and_routs.forms import RegistrationForm, LoginForm
-from webpage.domain_model.domain_model import User
-from flask_login import login_user, current_user, logout_user, login_required
+from flask import render_template, url_for, flash, redirect, request, Blueprint, session
+from flask_login import current_user, login_user, login_required, logout_user
 
+from webpage import bcrypt
+from webpage.domain_model.domain_model import User, db
+from webpage.forms_and_routs.forms import RegistrationForm, LoginForm
 
 routes_blueprint = Blueprint('routes_blueprint', __name__)
 
@@ -18,12 +18,19 @@ def register():
         email = form.email.data
         password = form.password.data
 
+        # Create new user instance
         user = User(username=username, email=email, password=password)
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! Please log in.', 'success')
         return redirect(url_for('routes_blueprint.login'))
+    else:
+        # Handle form validation errors
+        for field, errors in form.errors.items():
+            for error in errors:
+                flash(f"Error in {getattr(form, field).label.text}: {error}", 'danger')
     return render_template('register.html', form=form)
+
 
 @routes_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
@@ -43,8 +50,11 @@ def login():
             flash('Login unsuccessful. Please check email and password.', 'danger')
     return render_template('login.html', form=form)
 
+
 @routes_blueprint.route('/logout')
 @login_required
 def logout():
     logout_user()
+    session.clear()  # Clears all data from the session
+    flash('You have been logged out.', 'success')
     return redirect(url_for('home_page_blueprint.home_page'))

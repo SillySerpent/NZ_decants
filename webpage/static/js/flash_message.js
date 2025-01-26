@@ -1,16 +1,17 @@
+// flash_message.js
+
 document.addEventListener('DOMContentLoaded', function() {
     var flashMessages = document.querySelectorAll('.flash-message');
 
     flashMessages.forEach(function(message, index) {
-        // Delay the appearance for a smoother effect
         setTimeout(function() {
             message.classList.add('show');
-        }, 300 * index);
+        }, 100 * index);
 
         // Auto-dismiss after 5 seconds
         setTimeout(function() {
             message.classList.remove('show');
-        }, 5000 + (300 * index));
+        }, 5000 + (100 * index));
 
         var closeBtn = message.querySelector('.close-btn');
         if (closeBtn) {
@@ -19,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Remove the message element after it hides
+        // Remove the message element after the transition ends
         message.addEventListener('transitionend', function(event) {
-            if (!message.classList.contains('show') && event.propertyName === 'opacity') {
+            if (!message.classList.contains('show')) {
                 message.parentNode.removeChild(message);
             }
         });

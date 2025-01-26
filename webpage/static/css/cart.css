@@ -7,29 +7,37 @@
 
 body {
     font-family: "Georgia", serif;
-    background-color: #f8f1e5;
-    color: #5a4634;
+    background-color: #faf8f6;
+    color: #333;
     scroll-behavior: smooth;
 }
 
 /* Cart Styles */
 .cart-container {
     padding: 4rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .cart-container h2 {
     text-align: center;
     margin-bottom: 2rem;
-    color: #5a4634;
-    font-size: 2rem;
+    color: #333;
+    font-size: 2.5rem;
+    position: relative;
+}
+
+.cart-container h2::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background-color: #d1b18a;
+    display: block;
+    margin: 1rem auto 0;
 }
 
 .cart-items {
     width: 100%;
-    max-width: 900px;
     margin-bottom: 2rem;
 }
 
@@ -37,25 +45,26 @@ body {
     display: flex;
     align-items: center;
     background-color: #fff;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 15px;
     width: 100%;
-    /* Removed max-width from cart-item */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .cart-item:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .cart-item img {
-    width: 120px;
-    height: 120px;
-    border-radius: 10px;
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
     object-fit: cover;
-    margin-right: 1.5rem;
+    margin-right: 2rem;
 }
 
 .item-details {
@@ -64,44 +73,58 @@ body {
 
 .item-details h3 {
     margin-bottom: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    color: #5a4634;
 }
 
 .item-details p {
     font-size: 1rem;
     color: #a38974;
+    margin-bottom: 0.5rem;
 }
 
 .item-quantity {
     display: flex;
     align-items: center;
-    flex: 1;
     justify-content: center;
+    flex: 1;
 }
 
 .quantity-btn {
     background-color: #d1b18a;
-    color: #5a4634;
-    padding: 0.5rem 0.9rem;
+    color: #fff;
+    padding: 0.5rem 1rem;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 0 0.5rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .quantity-btn:hover {
-    background-color: #e6c6a8;
+    background-color: #b99772;
+    transform: scale(1.1);
 }
 
 .item-quantity input {
-    width: 50px;
+    width: 60px;
     text-align: center;
-    padding: 0.3rem;
+    padding: 0.5rem;
     border: 1px solid #d1b18a;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.1rem;
+}
+
+.item-total-price {
+    flex: 1;
+    text-align: center;
+}
+
+.item-total-price p {
+    font-size: 1.2rem;
+    color: #5a4634;
+    font-weight: bold;
 }
 
 .item-actions {
@@ -111,60 +134,96 @@ body {
 .item-actions .remove-item {
     background-color: transparent;
     color: #a38974;
-    font-size: 1.2rem;
-    transition: color 0.3s;
+    font-size: 1.5rem;
+    transition: color 0.3s, transform 0.2s;
+    border: none;
+    cursor: pointer;
 }
 
 .item-actions .remove-item:hover {
-    color: #d1b18a;
+    color: #d16666;
+    transform: scale(1.2);
 }
 
 .cart-summary {
     width: 100%;
-    max-width: 900px;
     display: flex;
-    justify-content: flex-end; /* Aligns items to the right */
+    justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
+    flex-wrap: wrap;
 }
 
 .cart-summary h3 {
-    margin-right: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    color: #5a4634;
 }
 
-.checkout-btn {
+.cart-summary button {
     background-color: #d1b18a;
-    color: #5a4634;
-    padding: 0.9rem 2rem;
+    color: #fff;
+    padding: 0.8rem 2rem;
     border-radius: 5px;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.1rem;
     transition: background-color 0.3s, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin: 0.5rem;
 }
 
-.checkout-btn:hover {
-    background-color: #e6c6a8;
+.cart-summary button:hover {
+    background-color: #b99772;
     transform: scale(1.05);
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .cart-container {
-        padding: 2rem 1rem;
-    }
+.empty-cart-message {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #a38974;
+    margin-bottom: 2rem;
+}
 
+.continue-shopping-btn {
+    background-color: #d1b18a;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin: 1rem auto 0;
+    display: block;
+}
+
+.continue-shopping-btn:hover {
+    background-color: #b99772;
+    transform: scale(1.05);
+}
+
+.cart-total-price {
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
     .cart-item {
         flex-direction: column;
         align-items: center;
+        padding: 1rem;
     }
 
     .cart-item img {
+        margin-bottom: 1rem;
         margin-right: 0;
+    }
+
+    .item-details {
+        text-align: center;
         margin-bottom: 1rem;
     }
 
-    .item-quantity, .item-actions {
+    .item-quantity, .item-total-price, .item-actions {
         margin-top: 1rem;
     }
 
@@ -176,11 +235,30 @@ body {
 
     .cart-summary h3 {
         margin-bottom: 1rem;
-        margin-right: 0;
     }
+}
 
-    .checkout-btn {
-        width: 100%;
-        text-align: center;
-    }
+.progress-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto;
+    text-align: center;
+    color: #5a4634;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    position: relative;
+    height: 20px;
+    margin-top: 0.5rem;
+}
+
+.progress {
+    background-color: #d1b18a;
+    height: 100%;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.3s ease;
 }

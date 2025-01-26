@@ -28,4 +28,3 @@ def add_cologne_to_cart(cologne_id: int, quantity: int = 1):
         db.session.add(new_item)
 
     db.session.commit()
-    flash(f"Added {quantity} x {cologne.name} to your cart.", 'success')

@@ -17,7 +17,7 @@
     <!-- Login Form -->
     <div class="auth-container">
         <form method="post" class="auth-form">
-            {{ form.hidden_tag() }}
+             {{ form.csrf_token }}
             <h2>Login to Your Account</h2>
             {% with messages = get_flashed_messages(with_categories=true) %}
               {% if messages %}
@@ -46,7 +46,7 @@
     {% include 'footer.html' %}
 
     <!-- JavaScript Files -->
-    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+    <script src="static/js/auth.js"></script>
 
 </body>
 </html>
