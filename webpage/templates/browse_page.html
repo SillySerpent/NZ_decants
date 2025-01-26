@@ -69,7 +69,20 @@
               <img src="{{ cologne.picture_url }}" alt="Cologne Photo">
               <h2>{{ cologne.name }}</h2>
               <p>{{ cologne.notes }}</p>
-              <button>Add to Cart</button>
+
+              <!-- Add to Cart Form -->
+              <form action="{{ url_for('browse_page_blueprint.add_to_cart', cologne_id=cologne.id) }}" method="post">
+                {% if current_user.is_authenticated %}
+                  <!-- Include CSRF token if using CSRF protection -->
+                  <!-- Optional: Quantity input -->
+                  <button type="submit">Add to Cart</button>
+                {% else %}
+                    <button>
+                        <a href="{{ url_for('routes_blueprint.login') }}">Add to cart</a>
+                    </button>
+                {% endif %}
+              </form>
+
             </div>
             {% endfor %}
 

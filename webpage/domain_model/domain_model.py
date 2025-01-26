@@ -70,6 +70,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(150))
     email = db.Column(db.String(150), nullable=False, unique=True)
     password_hash = db.Column(db.String(256), nullable=False)
+    cart = db.relationship('Cart', back_populates='user', uselist=False)
 
     def __init__(self, username: str, password: str, email: str):
         self.username = username
@@ -91,7 +92,8 @@ class Cart(db.Model):
     __tablename__ = 'carts'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Corrected
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user = db.relationship('User', back_populates='cart')
     items = db.relationship('CartItem', backref='cart', lazy=True)
 
 

@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up - NZ Decants</title>
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="static/css/auth.css">
     <link rel="stylesheet" href="static/css/main_menu.css">
     <link rel="stylesheet" href="static/css/nav_bar.css">
-        <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha384-iKbHZ1UnJT77w9wC666MtfMjhlHuqqzjG3c8456Y5qf5cXYE7d9x5M0o0rSiFZgQ"
-        crossorigin="anonymous">
-    <!-- Include Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -31,24 +27,33 @@
                 {% endfor %}
               {% endif %}
             {% endwith %}
+
+            <!-- Username Input Group -->
             <div class="input-group">
-                <i class="fas fa-user"></i>
+                <i class="fas fa-user input-icon"></i>
                 {{ form.username(class="form-input", placeholder="Username") }}
             </div>
+
+            <!-- Email Input Group -->
             <div class="input-group">
-                <i class="fas fa-envelope"></i>
+                <i class="fas fa-envelope input-icon"></i>
                 {{ form.email(class="form-input", placeholder="Email Address") }}
             </div>
+
+            <!-- Password Input Group -->
             <div class="input-group">
-                <i class="fas fa-lock"></i>
+                <i class="fas fa-lock input-icon"></i>
                 {{ form.password(class="form-input", placeholder="Password") }}
                 <i class="fas fa-eye toggle-password"></i>
             </div>
+
+            <!-- Confirm Password Input Group -->
             <div class="input-group">
-                <i class="fas fa-lock"></i>
+                <i class="fas fa-lock input-icon"></i>
                 {{ form.confirm_password(class="form-input", placeholder="Confirm Password") }}
                 <i class="fas fa-eye toggle-password"></i>
             </div>
+
             {{ form.submit(class="button") }}
             <p class="auth-link">Already have an account? <a href="{{ url_for('routes_blueprint.login') }}">Login</a></p>
         </form>
@@ -58,7 +63,7 @@
     {% include 'footer.html' %}
 
     <!-- JavaScript Files -->
-    <script src="static/css/auth.js"></script>
+    <script src="static/js/auth.js"></script>
 
 </body>
 </html>

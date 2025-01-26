@@ -66,7 +66,8 @@ button {
     margin-bottom: 1.5rem;
 }
 
-.input-group i {
+/* Style the first <i> element (left icon) */
+.input-group i:first-of-type {
     position: absolute;
     top: 50%;
     left: 10px;
@@ -74,6 +75,26 @@ button {
     color: #a38974;
 }
 
+/* Style the last <i> element (right icon - toggle password) */
+.input-group i:last-of-type {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #a38974;
+}
+
+/* Style the lock icon */
+.input-group .input-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #a38974;
+}
+
+/* Style the toggle password icon */
 .input-group .toggle-password {
     position: absolute;
     top: 50%;
@@ -85,7 +106,7 @@ button {
 
 .form-input {
     width: 100%;
-    padding: 0.7rem 0.7rem 0.7rem 2.5rem;
+    padding: 0.7rem 2.5rem 0.7rem 2.5rem; /* Adjusted padding to accommodate both icons */
     border: 2px solid #d1b18a;
     border-radius: 5px;
     font-size: 1rem;
