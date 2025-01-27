@@ -3,12 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Shopping Cart - NZ Decants</title>
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nav_bar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main_menu.css') }}">
     <!-- Including Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
           crossorigin="anonymous" />
+    <!-- CSRF Token Meta Tag -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>
+        const updateQuantityUrl = "{{ url_for('cart_blueprint.update_quantity') }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+
 </head>
 <body>
 
@@ -21,7 +30,7 @@
         {% if cart_items %}
         <div class="cart-items">
             {% for item in cart_items %}
-            <div class="cart-item">
+            <div class="cart-item" data-cologne-id="{{ item.cologne_id }}">
                 <img src="{{ item.cologne.picture_url }}" alt="{{ item.cologne.name }}">
                 <div class="item-details">
                     <h3>{{ item.cologne.name }}</h3>
@@ -30,40 +39,50 @@
                 </div>
                 <div class="item-quantity">
                     <button class="quantity-btn decrease">-</button>
-                    <input type="number" value="{{ item.quantity }}" min="1">
+                    <input type="number" value="{{ item.quantity }}" min="1" name="quantity" />
                     <button class="quantity-btn increase">+</button>
                 </div>
                 <div class="item-total-price">
                     <p>Total: $<span class="item-total">{{ (item.cologne.price * item.quantity) | round(2) }}</span></p>
                 </div>
                 <div class="item-actions">
-                    <button class="remove-item"><i class="fas fa-trash"></i></button>
+                    <form action="{{ url_for('cart_blueprint.remove_cologne', cologne_id=item.cologne_id) }}"
+                          method="POST"
+                          class="remove-item-form">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="remove-item">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
             {% endfor %}
         </div>
+
         <div class="progress-container">
-            <p>You're only $<span class="amount-needed">50.00</span> away from free shipping!</p>
+            <p>
+                You're only $<span class="amount-needed">50.00</span> away from free shipping!
+            </p>
             <div class="progress-bar">
                 <div class="progress"></div>
             </div>
         </div>
+
         <div class="cart-summary">
             <h3>Total: $<span class="cart-total-price">0.00</span></h3>
             <button class="continue-shopping-btn">Continue Shopping</button>
             <button class="checkout-btn">Proceed to Checkout</button>
         </div>
         {% else %}
-        <p class="empty-cart-message">Your cart is empty. Start adding colognes to your collection!</p>
+        <p class="empty-cart-message">
+            Your cart is empty. Start adding colognes to your collection!
+        </p>
         <button class="continue-shopping-btn">Browse Colognes</button>
         {% endif %}
     </div>
 
     <!-- Footer -->
     {% include 'footer.html' %}
-
-    <!-- JavaScript Files -->
-    <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
 
 </body>
 </html>

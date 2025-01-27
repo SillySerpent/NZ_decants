@@ -262,3 +262,22 @@ body {
     width: 0%;
     transition: width 0.3s ease;
 }
+
+/* Hide number input spinners */
+
+/* Chrome, Safari, Edge, Opera */
+.item-quantity input[type=number]::-webkit-inner-spin-button,
+.item-quantity input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.item-quantity input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Optional: Set width of input to prevent shrinking */
+.item-quantity input[type=number] {
+    width: 50px;
+}

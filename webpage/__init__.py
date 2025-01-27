@@ -13,9 +13,10 @@ import webpage.adapters.repository as repo
 from webpage.domain_model.domain_model import db
 from dotenv import load_dotenv
 
-
 bcrypt = Bcrypt()
 login_manager = LoginManager()
+csrf = CSRFProtect()
+
 
 def create_app():
     """Construct the core application."""
@@ -29,13 +30,16 @@ def create_app():
     db_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), db_name)
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_ECHO'] = True
     app.config['DEBUG'] = True
+    app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = False
+
 
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
     app.secret_key = os.environ.get('SECRET_KEY')
 
     # Initialize CSRF protection
-    csrf = CSRFProtect(app)
+    csrf.init_app(app)
 
     # --- Initialize Extensions ---
     db.init_app(app)
@@ -90,4 +94,3 @@ def create_app():
         app.register_blueprint(routes.routes_blueprint)
 
     return app
-

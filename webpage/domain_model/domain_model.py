@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-from webpage import LoginManager
 from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
@@ -23,6 +23,8 @@ class Cologne(db.Model):
     notes = db.Column(db.String, nullable=True)
     release_year = db.Column(db.Integer, nullable=True)
     concentration = db.Column(db.String, nullable=True)
+
+    # Relationship to CartItem is established via backref in CartItem model.
 
     def __init__(self, price, name, size, picture_url, description, season,
                  sex, rating, notes, release_year, concentration):
@@ -59,9 +61,6 @@ class Cologne(db.Model):
         return self.id == other.id
 
 
-from werkzeug.security import generate_password_hash, check_password_hash
-
-
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
 
@@ -70,6 +69,8 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(150))
     email = db.Column(db.String(150), nullable=False, unique=True)
     password_hash = db.Column(db.String(256), nullable=False)
+
+    # Relationship to Cart
     cart = db.relationship('Cart', back_populates='user', uselist=False)
 
     def __init__(self, username: str, password: str, email: str):
@@ -88,14 +89,18 @@ class User(db.Model, UserMixin):
     def verify_password(self, candidate_password):
         return check_password_hash(self.password_hash, candidate_password)
 
+
 class Cart(db.Model):
     __tablename__ = 'carts'
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    user = db.relationship('User', back_populates='cart')
-    items = db.relationship('CartItem', backref='cart', lazy=True)
 
+    # Relationship to User
+    user = db.relationship('User', back_populates='cart')
+
+    # Relationship to CartItem
+    items = db.relationship('CartItem', back_populates='cart', lazy='select')
 
     def __repr__(self):
         return f"<Cart for User {self.user_id}>"
@@ -107,15 +112,25 @@ class Cart(db.Model):
         else:
             new_item = CartItem(cart_id=self.id, cologne_id=cologne_id, quantity=quantity)
             db.session.add(new_item)
+        db.session.commit()  # Ensure changes are saved to the database
 
     def remove_item(self, cologne_id: int):
-        item = next((item for item in self.items if item.cologne_id == cologne_id), None)
-        if item:
-            db.session.delete(item)
+        try:
+            item = CartItem.query.filter_by(cart_id=self.id, cologne_id=cologne_id).first()
+            if item:
+                db.session.delete(item)
+                db.session.commit()
+                return True
+            return False
+        except Exception as e:
+            db.session.rollback()
+            print(f"Error removing item from cart: {e}")
+            raise
 
     def clear_cart(self):
-        for item in self.items:
+        for item in self._items:
             db.session.delete(item)
+        db.session.commit()
 
 
 class CartItem(db.Model):
@@ -126,6 +141,12 @@ class CartItem(db.Model):
     cologne_id = db.Column(db.Integer, db.ForeignKey('cologne.id'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False, default=1)
 
+    # Relationship to Cart
+    cart = db.relationship('Cart', back_populates='items')
+
+    # Relationship to Cologne
+    cologne = db.relationship('Cologne', backref=db.backref('cart_items', lazy='select'))
+
     def __init__(self, cart_id: int, cologne_id: int, quantity: int):
         self.cart_id = cart_id
         self.cologne_id = cologne_id
@@ -135,20 +156,20 @@ class CartItem(db.Model):
         return f"<CartItem Cologne {self.cologne_id} Quantity {self.quantity}>"
 
     def get_total_price(self):
-        cologne = Cologne.query.get(self.cologne_id)
-        return cologne.apply_discount() * self.quantity
+        return self.cologne.apply_discount() * self.quantity
 
 
 class Order(db.Model):
     __tablename__ = 'orders'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Corrected
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     total_price = db.Column(db.Float, nullable=False)
     date = db.Column(db.DateTime, nullable=False)
     status = db.Column(db.String(50), nullable=False, default='Pending')
 
-    items = db.relationship('OrderItem', backref='order', lazy=True)
+    # Relationship to OrderItem
+    items = db.relationship('OrderItem', backref='order', lazy='select')
 
     def __init__(self, user_id: int, total_price: float, date, status: str = 'Pending'):
         self.user_id = user_id
@@ -172,6 +193,9 @@ class OrderItem(db.Model):
     quantity = db.Column(db.Integer, nullable=False, default=1)
     price_at_purchase = db.Column(db.Float, nullable=False)
 
+    # Relationship to Cologne
+    cologne = db.relationship('Cologne', backref=db.backref('order_items', lazy='select'))
+
     def __init__(self, order_id: int, cologne_id: int, quantity: int, price_at_purchase: float):
         self.order_id = order_id
         self.cologne_id = cologne_id
@@ -189,11 +213,14 @@ class Review(db.Model):
     __tablename__ = 'reviews'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Corrected
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     cologne_id = db.Column(db.Integer, db.ForeignKey('cologne.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.Text)
 
+    # Relationships
+    user = db.relationship('User', backref=db.backref('reviews', lazy='select'))
+    cologne = db.relationship('Cologne', backref=db.backref('reviews', lazy='select'))
 
     def __init__(self, user_id: int, cologne_id: int, rating: int, comment: str = None):
         self.user_id = user_id

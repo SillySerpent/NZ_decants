@@ -1,68 +1,128 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const decreaseButtons = document.querySelectorAll('.decrease');
-    const increaseButtons = document.querySelectorAll('.increase');
-    const quantityInputs = document.querySelectorAll('.item-quantity input');
-    const removeButtons = document.querySelectorAll('.remove-item');
+    const cartContainer = document.querySelector('.cart-items');
     const totalPriceElement = document.querySelector('.cart-total-price');
-    const itemTotalPrices = document.querySelectorAll('.item-total');
+    const freeShippingThreshold = 100; // Threshold for free shipping
 
-    // Function to update the total price
+    // Function to update the total price and progress bar
     function updateTotalPrice() {
         let totalPrice = 0;
         const cartItems = document.querySelectorAll('.cart-item');
+
         cartItems.forEach(item => {
-            const price = parseFloat(item.querySelector('.item-details p').textContent.replace('Price: $', ''));
+            const priceElement = item.querySelector('.item-details p');
+            const priceText = priceElement.textContent.match(/Price:\s*\$([\d.]+)/);
+            const price = parseFloat(priceText[1]);
             const quantity = parseInt(item.querySelector('.item-quantity input').value);
             const itemTotalElement = item.querySelector('.item-total');
             const itemTotalPrice = price * quantity;
             itemTotalElement.textContent = itemTotalPrice.toFixed(2);
             totalPrice += itemTotalPrice;
         });
+
         totalPriceElement.textContent = totalPrice.toFixed(2);
+
+        // Update progress bar
+        const progress = document.querySelector('.progress');
+        const progressMessageElement = document.querySelector('.progress-container p');
+
+        if (progress && progressMessageElement) {
+            const percentage = Math.min((totalPrice / freeShippingThreshold) * 100, 100);
+            progress.style.width = `${percentage}%`;
+
+            if (totalPrice >= freeShippingThreshold) {
+                progressMessageElement.innerHTML = "You've qualified for free shipping!";
+            } else {
+                const amountNeeded = Math.max(freeShippingThreshold - totalPrice, 0).toFixed(2);
+                progressMessageElement.innerHTML = `You're only $<span class="amount-needed">${amountNeeded}</span> away from free shipping!`;
+            }
+        }
+
+        // Update the disabled state of decrease buttons
+        updateQuantityButtons();
     }
 
-    // Initialize total price
+    // Disable decrease button when quantity is one
+    function updateQuantityButtons() {
+        const cartItems = document.querySelectorAll('.cart-item');
+        cartItems.forEach(item => {
+            const quantity = parseInt(item.querySelector('.item-quantity input').value);
+            const decreaseButton = item.querySelector('.quantity-btn.decrease');
+            if (quantity <= 1) {
+                decreaseButton.disabled = true;
+            } else {
+                decreaseButton.disabled = false;
+            }
+        });
+    }
+
+    // Initialize total price and progress bar when the page loads
     updateTotalPrice();
 
-    decreaseButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const input = button.parentElement.querySelector('input');
+    // Event delegation for plus and minus buttons
+    cartContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('decrease')) {
+            const input = event.target.parentElement.querySelector('input');
             let quantity = parseInt(input.value);
             if (quantity > 1) {
                 quantity--;
                 input.value = quantity;
                 updateTotalPrice();
+                updateQuantityInServer(event.target.closest('.cart-item'));
             }
-        });
-    });
+        }
 
-    increaseButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const input = button.parentElement.querySelector('input');
+        if (event.target.classList.contains('increase')) {
+            const input = event.target.parentElement.querySelector('input');
             let quantity = parseInt(input.value);
             quantity++;
             input.value = quantity;
             updateTotalPrice();
-        });
+            updateQuantityInServer(event.target.closest('.cart-item'));
+        }
     });
 
-    quantityInputs.forEach(input => {
-        input.addEventListener('change', () => {
-            if (input.value < 1) {
+    // Event listener for quantity input change
+    cartContainer.addEventListener('input', function(event) {
+        if (event.target.matches('.item-quantity input')) {
+            const input = event.target;
+            let quantity = parseInt(input.value);
+            if (isNaN(quantity) || quantity < 1) {
                 input.value = 1;
+                alert('Minimum quantity is 1.');
             }
             updateTotalPrice();
-        });
+            updateQuantityInServer(event.target.closest('.cart-item'));
+        }
     });
 
-    removeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const item = button.closest('.cart-item');
-            item.remove();
-            updateTotalPrice();
-            alert('Item removed from your cart.');
+    // Function to update quantity in the server
+    function updateQuantityInServer(cartItemElement) {
+        const quantityInput = cartItemElement.querySelector('.item-quantity input');
+        const quantity = parseInt(quantityInput.value);
+        const cologneId = cartItemElement.dataset.cologneId;
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        fetch(updateQuantityUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({
+                'cologne_id': cologneId,
+                'quantity': quantity
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                alert('Error updating quantity on server.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
-    });
+    }
 
     // Continue Shopping Button
     const continueShoppingButtons = document.querySelectorAll('.continue-shopping-btn');
@@ -72,27 +132,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
-// At the top of your script
-const freeShippingThreshold = 100; // Example threshold for free shipping
-
-// In your updateTotalPrice function, add:
-function updateTotalPrice() {
-    // ...existing code...
-
-    // Update progress bar
-    const progress = document.querySelector('.progress');
-    const amountNeededElement = document.querySelector('.amount-needed');
-
-    if (progress && amountNeededElement) {
-        const percentage = Math.min((totalPrice / freeShippingThreshold) * 100, 100);
-        progress.style.width = `${percentage}%`;
-
-        const amountNeeded = Math.max(freeShippingThreshold - totalPrice, 0);
-        amountNeededElement.textContent = amountNeeded.toFixed(2);
-
-        if (totalPrice >= freeShippingThreshold) {
-            amountNeededElement.parentElement.textContent = "You've qualified for free shipping!";
-        }
-    }
-}

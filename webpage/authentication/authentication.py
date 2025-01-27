@@ -10,10 +10,10 @@ authentication_blueprint = Blueprint('authentication_blueprint', __name__)
 
 @authentication_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
+    form = LoginForm()
     if current_user.is_authenticated:
         return redirect(url_for('home_page_blueprint.home_page'))
 
-    form = LoginForm()
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data

@@ -1,11 +1,14 @@
 from abc import ABC
 from typing import Type
 
-from sqlalchemy.exc import NoResultFound
+from flask import abort
+from flask_login import current_user
+from sqlalchemy import func
+from sqlalchemy.exc import NoResultFound, SQLAlchemyError
 from sqlalchemy.orm import scoped_session
 
 from webpage.adapters.repository import AbstractRepository
-from webpage.domain_model.domain_model import Cologne, Review
+from webpage.domain_model.domain_model import Cologne, Review, Cart, CartItem, db, User
 
 
 class SessionContextManager:
@@ -68,6 +71,99 @@ class SqlAlchemyRepository(AbstractRepository, ABC):
         except NoResultFound:
             print(f'Cologne with ID {cologne_id} was not found.')
         return cologne
+
+    def update_cart_item_quantity(self, user_id, cologne_id, quantity):
+        cart_item = self._session_cm.session.query(CartItem).join(Cart).filter(
+            Cart.user_id == user_id,
+                     CartItem.cologne_id == cologne_id
+                     ).first()
+
+        if cart_item:
+            cart_item.quantity = quantity
+            self._session_cm.session.commit()
+        else:
+            raise Exception("Cart item not found.")
+
+    def get_cart_item_count(self, user_id: int) -> int:
+        try:
+            # Get the user's cart
+            cart = self._session_cm.session.query(Cart).filter_by(user_id=user_id).first()
+            if not cart:
+                return 0
+
+            # Sum the quantities of all items in the cart
+            total_quantity = self._session_cm.session.query(func.sum(CartItem.quantity)) \
+                .filter(CartItem.cart_id == cart.id) \
+                .scalar()
+            if total_quantity is not None:
+                return int(total_quantity)
+            else:
+                return 0
+        except Exception as e:
+            print(f"Error fetching cart item count: {e}")
+            return 0
+
+    def get_cart_items_by_user_id(self, user_id: int):
+        try:
+            # Clear any existing cached queries
+            self._session_cm.session.expire_all()
+
+            cart = self._session_cm.session.query(Cart).filter_by(user_id=user_id).first()
+            if not cart:
+                return []
+
+            # Force a fresh query
+            cart_items = self._session_cm.session.query(CartItem) \
+                .filter_by(cart_id=cart.id) \
+                .options(db.joinedload(CartItem.cologne)) \
+                .all()
+
+            return cart_items
+        except Exception as e:
+            print(f"Error fetching cart items: {e}")
+            return []
+
+    def remove_cologne_from_cart(self, user_id: int, cologne_id: int) -> None:
+        print(f"Repository: Attempting to remove cologne {cologne_id} for user {user_id}")
+
+        try:
+            cart = self._session_cm.session.query(Cart).filter_by(user_id=user_id).first()
+            print(f"Repository: Found cart: {cart}")
+
+            if not cart:
+                print("Repository: No cart found")
+                return
+
+            cart_item = self._session_cm.session.query(CartItem).filter_by(
+                cart_id=cart.id,
+                cologne_id=cologne_id
+            ).first()
+            print(f"Repository: Found cart item: {cart_item}")
+
+            if cart_item:
+                self._session_cm.session.delete(cart_item)
+                self._session_cm.commit()
+                print("Repository: Successfully deleted cart item")
+            else:
+                print("Repository: No cart item found to delete")
+
+        except Exception as e:
+            print(f"Repository: Error removing cologne: {e}")
+            self._session_cm.rollback()
+            raise
+
+
+    def get_colognes_from_cart(self) -> Type[Cologne]:
+        if not current_user.is_authenticated:
+            abort(401)  # Unauthorized access
+
+        cart = Cart.query.filter_by(user_id=current_user.id).first()
+
+        if not cart or not cart.items:
+            return []
+
+        colognes = [item.cologne for item in cart.items]  # Now item.cologne works
+        return colognes
 
     def get_colognes_by_season(self, season: str) -> list[Type[Cologne]]:
         """Retrieve colognes matching a specific season."""

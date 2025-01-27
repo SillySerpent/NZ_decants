@@ -18,18 +18,18 @@
   <script src="static/js/script_browse_page.js"></script>
   <script src="static/js/flash_message.js"></script>
 
-  <div id="flash-messages">
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="flash-message {{ category }}">
-            <span>{{ message }}</span>
-            <button class="close-btn"><i class="fas fa-times"></i></button>
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-  </div>
+    <div id="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash-message {{ category }}">
+                <span>{{ message }}</span>
+                <button class="close-btn"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
 
   <!-- Main Content -->
   <main class="browse-content">
