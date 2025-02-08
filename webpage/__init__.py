@@ -93,4 +93,7 @@ def create_app():
         from webpage.forms_and_routs import routes
         app.register_blueprint(routes.routes_blueprint)
 
+        from webpage.cologne import cologne
+        app.register_blueprint(cologne.cologne_blueprint)
+
     return app

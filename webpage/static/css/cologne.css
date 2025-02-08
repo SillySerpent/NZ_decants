@@ -1,0 +1,294 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Georgia", serif;
+    background-color: #faf8f6;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+/* Container */
+.cologne-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Cologne Info Section */
+.cologne-info {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.cologne-images {
+    flex: 1;
+    margin-right: 2rem;
+}
+
+.cologne-images .main-image {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.cologne-images .main-image:hover {
+    transform: scale(1.05);
+}
+
+.thumbnail-images {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.thumbnail-image {
+    width: 80px;
+    height: 80px;
+    margin-right: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.thumbnail-image:hover {
+    opacity: 0.7;
+}
+
+.cologne-details {
+    flex: 1;
+}
+
+.cologne-details h1 {
+    font-size: 2.5rem;
+    color: #5a4634;
+    margin-bottom: 0.5rem;
+}
+
+.cologne-details .brand {
+    font-size: 1.2rem;
+    color: #a38974;
+    margin-bottom: 1rem;
+}
+
+.cologne-details .price {
+    font-size: 2rem;
+    color: #d1b18a;
+    margin-bottom: 0.5rem;
+}
+
+.cologne-details .size {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1rem;
+}
+
+.cologne-details .description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.fragrance-notes {
+    margin-bottom: 2rem;
+}
+
+.fragrance-notes h3 {
+    font-size: 1.5rem;
+    color: #5a4634;
+    margin-bottom: 1rem;
+}
+
+.notes-cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.note-card {
+    width: 100px;
+    text-align: center;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s;
+}
+
+.note-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.note-card p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.note-card:hover {
+    transform: scale(1.1);
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    background-color: #d1b18a;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #b99772;
+    transform: scale(1.05);
+}
+
+/* Reviews Section */
+.reviews-section {
+    margin-top: 3rem;
+}
+
+.reviews-section h2 {
+    font-size: 2rem;
+    color: #5a4634;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.review-form-container {
+    margin-bottom: 3rem;
+}
+
+.review-form-container h3 {
+    font-size: 1.5rem;
+    color: #5a4634;
+    margin-bottom: 1rem;
+}
+
+.review-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.review-form .rating-input,
+.review-form .text-input {
+    margin-bottom: 1rem;
+}
+
+.review-form label {
+    display: block;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.star-rating {
+    display: flex;
+    direction: rtl;
+    font-size: 0;
+}
+
+.star-rating input[type=radio] {
+    display: none;
+}
+
+.star-rating label {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url('../images/star-empty.png') no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.star-rating input[type=radio]:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    background: url('../images/star-filled.png') no-repeat center center;
+    background-size: contain;
+}
+
+.review-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1b18a;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.submit-review-btn {
+    background-color: #d1b18a;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-review-btn:hover {
+    background-color: #b99772;
+}
+
+/* Display Reviews */
+.reviews-list .review {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1.5rem 0;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.reviewer-name {
+    font-weight: bold;
+    color: #5a4634;
+}
+
+.review-rating i {
+    color: #d1b18a;
+}
+
+.review-body p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.review-footer {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .cologne-info {
+        flex-direction: column;
+    }
+
+    .cologne-images {
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .notes-cards {
+        justify-content: center;
+    }
+
+    .review-form {
+        width: 100%;
+    }
+}

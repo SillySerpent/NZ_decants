@@ -1,4 +1,4 @@
-// flash_message.js
+// static/js/flash_message.js
 
 document.addEventListener('DOMContentLoaded', function() {
     var flashMessages = document.querySelectorAll('.flash-message');
@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
     flashMessages.forEach(function(message, index) {
         setTimeout(function() {
             message.classList.add('show');
-        }, 100 * index);
+        }, 500 * index);
 
         // Auto-dismiss after 5 seconds
         setTimeout(function() {
             message.classList.remove('show');
-        }, 5000 + (100 * index));
+        }, 5000 + (500 * index));
 
         var closeBtn = message.querySelector('.close-btn');
         if (closeBtn) {

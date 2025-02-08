@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ cologne.name }} - NZ Decants</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cologne.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav_bar.css') }}">
+    <!-- Including Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          crossorigin="anonymous" />
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    {% include 'navbar.html' %}
+
+    <!-- Main Content -->
+    <div class="cologne-container">
+        <!-- Cologne Info Section -->
+        <div class="cologne-info">
+            <div class="cologne-images">
+                <img src="{{ cologne.picture_url }}" alt="{{ cologne.name }}" class="main-image">
+                <!-- Additional images (if any) -->
+                <div class="thumbnail-images">
+
+                    <img src="{{ cologne.picture_url }}" alt="{{ cologne.name }} image" class="thumbnail-image">
+
+                </div>
+            </div>
+            <div class="cologne-details">
+                <h1>{{ cologne.name }}</h1>
+                <p class="brand">{{ cologne.brand }}</p>
+                <p class="price">$ {{ cologne.price }}</p>
+                <p class="size">{{ cologne.size }} ml</p>
+                <p class="description">{{ cologne.description }}</p>
+
+                <!-- Fragrance Notes -->
+
+                <!-- Add to Cart Button -->
+                <form action="{{ url_for('browse_page_blueprint.add_to_cart', cologne_id=cologne.id) }}" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="add-to-cart-btn">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="reviews-section">
+            <h2>Reviews</h2>
+            <!-- Review Form -->
+            <div class="review-form-container">
+                <h3>Leave a Review</h3>
+                <form  class="review-form">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="rating-input">
+                        <label for="rating">Your Rating:</label>
+                        <div class="star-rating">
+                            <input type="radio" name="rating" id="rating-5" value="5"><label for="rating-5"></label>
+                            <input type="radio" name="rating" id="rating-4" value="4"><label for="rating-4"></label>
+                            <input type="radio" name="rating" id="rating-3" value="3"><label for="rating-3"></label>
+                            <input type="radio" name="rating" id="rating-2" value="2"><label for="rating-2"></label>
+                            <input type="radio" name="rating" id="rating-1" value="1"><label for="rating-1"></label>
+                        </div>
+                    </div>
+                    <div class="text-input">
+                        <label for="review">Your Review:</label>
+                        <textarea name="review" id="review" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-review-btn">Submit Review</button>
+                </form>
+            </div>
+
+            <!-- Display Reviews -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <!-- JavaScript Files -->
+    <script src="{{ url_for('static', filename='js/cologne.js') }}"></script>
+</body>
+</html>

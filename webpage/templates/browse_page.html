@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +10,13 @@
   <link rel="stylesheet" href="static/css/browse_page.css">
   <link rel="stylesheet" href="static/css/flash_message.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+  <script src="static/js/script_browse_page.js"></script>
+  <script src="static/js/flash_message.js"></script>
 </head>
+
 <body>
   <!-- Navigation Bar -->
   {% include 'navbar.html' %}
-
-  <script src="static/js/script_browse_page.js"></script>
-  <script src="static/js/flash_message.js"></script>
 
     <div id="flash-messages">
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -81,24 +81,25 @@
     <div class="grid-container">
 
         {% for cologne in colognes %}
-        <div class="card small">
-          <img src="{{ cologne.picture_url }}" alt="Cologne Photo">
-          <h2>{{ cologne.name }}</h2>
-          <p>{{ cologne.notes }}</p>
+            <div class="card small">
+                <a href="{{ url_for('cologne_blueprint.cologne_page', cologne_id=cologne.id) }}" class="card-link">
+                    <img src="{{ cologne.picture_url }}" alt="Cologne Photo">
+                    <h2>{{ cologne.name }}</h2>
+                    <p>{{ cologne.notes }}</p>
+                </a>
 
-            {% if current_user.is_authenticated %}
-                <!-- Add to Cart Form -->
-                <form action="{{ url_for('browse_page_blueprint.add_to_cart', cologne_id=cologne.id) }}" method="post">
-                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                    <button type="submit">Add to Cart</button>
-                </form>
-            {% else %}
-                <button>
-                    <a href="{{ url_for('authentication_blueprint.login') }}">Add to Cart</a>
-                </button>
-            {% endif %}
-
-        </div>
+                {% if current_user.is_authenticated %}
+                    <!-- Add to Cart Form -->
+                    <form action="{{ url_for('browse_page_blueprint.add_to_cart', cologne_id=cologne.id) }}" method="post">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button type="submit">Add to Cart</button>
+                    </form>
+                {% else %}
+                    <button>
+                        <a href="{{ url_for('authentication_blueprint.login') }}">Add to Cart</a>
+                    </button>
+                {% endif %}
+            </div>
         {% endfor %}
 
         </div>
